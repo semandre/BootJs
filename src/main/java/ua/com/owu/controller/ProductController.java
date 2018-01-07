@@ -2,13 +2,11 @@ package ua.com.owu.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ua.com.owu.entity.Product;
 import ua.com.owu.service.ProductService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -18,7 +16,7 @@ public class ProductController {
     ProductService productService;
 
     @GetMapping("/show")
-    public List<Product> index(){
+    public List<Product> index() {
 
         List<Product> all = productService.findAll();
         return all;
@@ -26,10 +24,24 @@ public class ProductController {
 
 
     @PostMapping("/save")
-    public List<Product> save(@RequestBody Product product){
+    public List<Product> save(@RequestBody Product product) {
         System.out.println(product);
-    productService.save(product);
-    return productService.findAll();
+        Date date = new Date();
+        product.setAddingDate(date);
+        productService.save(product);
+        return productService.findAll();
     }
 
+    @GetMapping("/SortByLowPrice")
+    public List<Product> SortByLowPrice(){
+        return productService.sortByLowPrice();
+    }
+    @GetMapping("/SortByHighPrice")
+    public List<Product> SortByHighPrice(){
+        return productService.sortByHighPrice();
+    }
+    @GetMapping("/SortByAddingDate")
+    public List<Product> SortByAddingDate(){
+        return productService.sortByAddingDate();
+    }
 }

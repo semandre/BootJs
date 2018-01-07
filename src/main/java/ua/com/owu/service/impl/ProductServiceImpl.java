@@ -22,4 +22,19 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> findAll() {
         return productDao.findAll();
     }
+
+    @Override
+    public List<Product> sortByLowPrice() {
+        return productDao.sortByLowPrice();
+    }
+
+    @Override
+    public List<Product> sortByHighPrice() {
+        return productDao.sortByHighPrice();
+    }
+
+    @Override
+    public List<Product> sortByAddingDate() {
+        return productDao.sortByAddingDate();
+    }
 }
