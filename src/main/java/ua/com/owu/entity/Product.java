@@ -3,10 +3,7 @@ package ua.com.owu.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -22,5 +19,11 @@ public class Product {
     private String name;
     private String description;
     private double price;
+    private int count;
+
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    CategoryOfProduct categoryOfProduct = new CategoryOfProduct();
+
+
 
 }

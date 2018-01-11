@@ -38,7 +38,7 @@ $('#saveBtn').click(function () {
     var description=$('#descr').val();
     var price=$('#price').val();
     console.log(name);
-    console.log(description)
+    console.log(description);
     var product={
         name,
         description,
@@ -68,5 +68,18 @@ $('#saveBtn').click(function () {
     })
 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -8,15 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 
     @GetMapping("/adm")
-    public String admin(){
+    public String admin() {
         return "/admin";
-        }
+    }
 
+    @GetMapping("/account")
+    public String account() {
+        return "/account";
+    }
 
 
 }
