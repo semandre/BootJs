@@ -13,6 +13,10 @@ public interface ProductService {
 
 
     List<Product> sortByLowPrice();
+
     List<Product> sortByHighPrice();
+
     List<Product> sortByAddingDate();
+
+    List<Product> findAllWithCategory();
 }

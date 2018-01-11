@@ -34,32 +34,34 @@ public class ProductController {
     public List<Product> save(@RequestBody Product product) {
         Date date = new Date();
         product.setAddingdate(date);
-//        //----------
-//        Category category = new Category(product.getCategoryname());
-//        product.setCategory(category);
-//        //---------^ костиль
+        categoryService.findOne(product.getCategory().getCategoryname());
+        Category category = categoryService.findOne(product.getCategory().getCategoryname());
+        product.setCategory(category);
         productService.save(product);
         System.out.println("--------------");
         System.out.println(product);
         System.out.println("--------------");
+//        return productService.findAllWithCategory();
         return productService.findAll();
     }
 
     @PostMapping("/allCategory")
-    public List<Category> allCategory(){
+    public List<Category> allCategory() {
         return categoryService.findAll();
     }
 
     @GetMapping("/SortByLowPrice")
-    public List<Product> SortByLowPrice(){
+    public List<Product> SortByLowPrice() {
         return productService.sortByLowPrice();
     }
+
     @GetMapping("/SortByHighPrice")
-    public List<Product> SortByHighPrice(){
+    public List<Product> SortByHighPrice() {
         return productService.sortByHighPrice();
     }
+
     @GetMapping("/SortByAddingDate")
-    public List<Product> SortByAddingDate(){
+    public List<Product> SortByAddingDate() {
         return productService.sortByAddingDate();
     }
 }

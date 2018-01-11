@@ -11,12 +11,10 @@ import ua.com.owu.service.ProductService;
 import java.util.List;
 
 @Service
-@Transactional
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
     ProductDao productDao;
-
 
 
     @Override
@@ -43,4 +41,11 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> sortByAddingDate() {
         return productDao.sortByAddingDate();
     }
+
+    @Override
+    public List<Product> findAllWithCategory() {
+        return productDao.findAllWithCategory();
+    }
+
+
 }

@@ -5,8 +5,9 @@ $(document).ready(function () {
         type: "GET",
         success: function (data) {
             for (let obj of data) {
+                console.log(data);
                 let $p = $("<p/>", {
-                    text: obj.id + " " + obj.name + " " + obj.price+" "+ obj.category.categoryname
+                    text: obj.id + " " + obj.name + " " + obj.price + " " + obj.category.categoryname
                 });
                 console.log($p);
                 $('.target').append($p);
@@ -20,17 +21,17 @@ $(document).ready(function () {
         }
 
     });
-var out ='';
-$.ajax({
-    url:'/allCategory',
-    type:'POST',
-    success:function(data){
-        for (var obj of data){
-        out+='<option value="'+obj.id+'">'+obj.categoryname+'</option>';
+    var out = '';
+    $.ajax({
+        url: '/allCategory',
+        type: 'POST',
+        success: function (data) {
+            for (var obj of data) {
+                out += '<option value="' + obj.categoryname + '">' + obj.categoryname + '</option>';
+            }
+            $('#list').html(out);
         }
-        $('#list').html(out);
-    }
-});
+    });
 
 });
 
@@ -43,7 +44,7 @@ $('#saveBtn').click(function () {
     // var addingDate = new Date().toLocaleString();
     var category = {
         categoryname
-    }
+    };
     var product = {
         name,
         description,
@@ -52,7 +53,6 @@ $('#saveBtn').click(function () {
 
         // addingDate
     };
-
 
 
     console.log(product);
@@ -66,7 +66,7 @@ $('#saveBtn').click(function () {
             console.log(data);
             for (let obj of data) {
                 let $p = $("<p/>", {
-                    text: obj.id + " " + obj.name + " " + obj.price+" "+ obj.category.categoryname
+                    text: obj.id + " " + obj.name + " " + obj.price + " " + obj.category.categoryname
                 });
                 console.log($p);
                 $('.target').append($p)
@@ -81,23 +81,21 @@ $('#saveBtn').click(function () {
 });
 
 
-
-
 $('#SortByLowPrice').click(function () {
     $('.target').empty();
     $.ajax({
-        url:'/SortByLowPrice',
-        type:'GET',
-        success:function (data) {
-            for(let obj of data){
-                let $p = $("<p>",{
-                    text: obj.id+" "+obj.name+" "+obj.price
+        url: '/SortByLowPrice',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $("<p>", {
+                    text: obj.id + " " + obj.name + " " + obj.price
                 });
                 console.log($p);
                 $('.target').append($p);
             }
         },
-        error:function () {
+        error: function () {
             console.log("sortbylowpriceERROR")
         }
     })
@@ -106,18 +104,18 @@ $('#SortByLowPrice').click(function () {
 $('#SortByHighPrice').click(function () {
     $('.target').empty();
     $.ajax({
-        url:'/SortByHighPrice',
-        type:'GET',
-        success:function (data) {
-            for(let obj of data){
-                let $p = $("<p>",{
-                    text: obj.id+" "+obj.name+" "+obj.price
+        url: '/SortByHighPrice',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $("<p>", {
+                    text: obj.id + " " + obj.name + " " + obj.price
                 });
                 console.log($p);
                 $('.target').append($p);
             }
         },
-        error:function () {
+        error: function () {
             console.log("sortbyhighpriceERROR")
         }
     })
@@ -126,12 +124,12 @@ $('#SortByHighPrice').click(function () {
 $('#SortByAddingDate').click(function () {
     $('.target').empty();
     $.ajax({
-        url:'/SortByAddingDate',
-        type:'GET',
-        success:function (data) {
-            for(let obj of data){
-                let $p = $('<p>',{
-                   text: obj.id+" "+obj.name+" "+obj.price
+        url: '/SortByAddingDate',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $('<p>', {
+                    text: obj.id + " " + obj.name + " " + obj.price
                 });
                 console.log($p);
                 $('.target').append($p);

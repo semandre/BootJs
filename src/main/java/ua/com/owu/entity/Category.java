@@ -1,24 +1,18 @@
 package ua.com.owu.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 
+@ToString(exclude = "products")
+@Entity
 @Getter
 @Setter
-@ToString(exclude = "products")
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-@Builder
-@Entity
 public class Category {
 
     @Id
@@ -27,11 +21,11 @@ public class Category {
     private String categoryname;
 
 
-
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "category")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
     @JsonIgnore
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 
-
-
+    public Category(String categoryname) {
+        this.categoryname = categoryname;
+    }
 }

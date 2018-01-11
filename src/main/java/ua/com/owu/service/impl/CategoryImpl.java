@@ -8,8 +8,8 @@ import ua.com.owu.entity.Category;
 import ua.com.owu.service.CategoryService;
 
 import java.util.List;
+
 @Service
-@Transactional
 public class CategoryImpl implements CategoryService {
     @Autowired
     CategoryDao categoryDao;
@@ -24,4 +24,17 @@ public class CategoryImpl implements CategoryService {
     public List<Category> findAll() {
         return categoryDao.findAll();
     }
+
+    @Override
+    public void remove(int id) {
+        categoryDao.delete(id);
+
+    }
+
+    @Override
+    public Category findOne(String name) {
+        return categoryDao.findByCategoryname(name);
+    }
+
+
 }
