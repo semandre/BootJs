@@ -2,63 +2,61 @@
 $(document).ready(function () {
     var out = '';
     $.ajax({
-        url:'/showCity',
-        type:'GET',
+        url: '/showCity',
+        type: 'POST',
         success: function (data) {
-            for (let obj of data) {
-                out+='<option value ="'+obj.city+'">'+obj.city+'<option>';
+            for (var obj of data) {
+                out += '<option value="' + obj.cityName + '">' + obj.cityName+ '</option>';
             }
-            $('#city').html(out);
-            console.log(out);
-        },
-        error: function () {
-            alert("error");
+            $('#list').html(out);
         }
     });
 });
 
-$('#saveUser').click(()=>{
-    // let login = $('#login').val();
-    // console.log(login);
-    // let password = $('#pass').val();
-    let firstName = $('#firs').val();
-    let lastName = $('#las').val();
-    let phoneNumber = $('#phon').val();
-    let city = $('#city').val();
-    let address = $('#add').val();
-    let email = $('#email').val();
-
-    let user = {
-        // login,
-        // password,
+$('#saveUser').click(function () {
+    var firstName = $('#first').val();
+    var lastName = $('#last').val();
+    var phoneNumber = $('#phone').val();
+    var address = $('#address').val();
+    var email = $('#email').val();
+    var cityName = $('#list').val();
+    var city = {
+        cityName
+    };
+    var customer = {
         firstName,
         lastName,
         phoneNumber,
-        city,
         address,
-        email
+        email,
+        city
     };
-    console.log(user);
-    $('.show').empty();
-    $.ajax({
-        url:'/saveUser',
-        type:'POST',
-        data:JSON.stringify(user),
-        contentType:'application/json',
-        success: function (res) {
 
-            for (let obj of res) {
+
+    console.log(customer);
+    $('.targetcus').empty();
+    $.ajax({
+        url: '/saveUser',
+        type: 'POST',
+        data: JSON.stringify(customer),
+        contentType: 'application/json',
+        success: function (data) {
+            console.log(data);
+            for (let obj of data) {
                 let $p = $("<p/>", {
-                    text: obj.firstName + " " + obj.lastName + " " +
-                    obj.phoneNumber + " "+obj.city+" " + obj.address + " " + obj.email
+                    text: obj.id + " " + obj.firstName + " " + obj.lastName + " "
+                    + obj.phoneNumber+ " " +obj.address+ " " +obj.email+ " "/* +obj.cityName*/
                 });
-                $('.show').append($p);
+                console.log($p);
+                $('.targetcus').append($p)
             }
         },
-        error:function () {
-            alert("error");
+        error: function () {
+            console.log("errooorrSAVE")
         }
-    });
+
+    })
+
 });
 
 

@@ -10,7 +10,7 @@ import ua.com.owu.service.CityService;
 import java.util.List;
 
 @Service
-@Transactional
+//@Transactional
 public class CityServiceImpl implements CityService{
     @Autowired
     private CityDao cityDao;
@@ -23,5 +23,10 @@ public class CityServiceImpl implements CityService{
     @Override
     public List<City> findAll() {
         return cityDao.findAll();
+    }
+
+    @Override
+    public City findOne(String name) {
+        return cityDao.findByCityNames(name);
     }
 }

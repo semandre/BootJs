@@ -26,12 +26,14 @@ public class AccountController {
     public List<Customer> saveUser(@RequestBody Customer customer){
         Date date = new Date();
         customer.setOrderDate(date);
-        this.customerService.save(customer);
+        City city  = cityService.findOne(customer.getCity().getCityName());
+        customer.setCity(city);
+        customerService.save(customer);
         return customerService.findAll();
     }
 
 
-    @GetMapping("/showCity")
+    @PostMapping ("/showCity")
     public List<City> showCity(){
         return  cityService.findAll();
     }

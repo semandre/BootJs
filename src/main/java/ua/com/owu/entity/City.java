@@ -1,6 +1,7 @@
 package ua.com.owu.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
@@ -12,19 +13,19 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude = "customers")
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String city;
+    private String cityName;
+//    @JsonManagedReference
+    @OneToMany( fetch = FetchType.LAZY, mappedBy = "city")
+    @JsonIgnore
+    private List<Customer> customers ;
 
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "city")
-    private List<Customer> customers = new ArrayList<>();
 
-
-    public City(String city) {
-        this.city= city;
+    public City(String cityName) {
+        this.cityName= cityName;
     }
 }
