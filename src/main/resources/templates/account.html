@@ -9,7 +9,7 @@
 <br/>
 
 
-<form name="myform" onsubmit= " return checkEmail()">
+<form name="myform" >
     <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
     <p id="first_name"></p>
     <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
@@ -18,10 +18,10 @@
     <p id="phone_number"></p>
     <input type="text" name="address" placeholder="address" id="address"/>
     <p id="address_"></p>
-    <input type="email" name="email" placeholder="email" id="email" onkeyup="checkEmail()"/>
+    <input type="email" name="email" placeholder="email" id="email" />
     <p id="email_"></p>
     <select id="list"></select>
-    <input type="submit" id="saveUser"></input>
+    <input type="submit" id="saveUser" disabled = "disabled"></input>
 </form>
 
 <div class="targetcus"></div>

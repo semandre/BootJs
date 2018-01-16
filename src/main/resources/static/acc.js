@@ -17,15 +17,13 @@ $(document).ready(function () {
     
 });
 
-$('form').submit(function() {
+$('#saveUser').submit(function () {
     var firstName = $('#first').val();
     var lastName = $('#last').val();
     var phoneNumber = $('#phone').val();
     var address = $('#address').val();
     var email = $('#email').val();
     var cityName = $('#list').val();
-    // var re = new RegExp("^\\+?(380)(\\d{9})");
-
     var city = {
         cityName
     };
@@ -53,6 +51,7 @@ $('form').submit(function() {
                 });
                 console.log($p);
                 $('.targetcus').append($p)
+
             }
         },
         error: function () {
