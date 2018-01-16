@@ -9,16 +9,19 @@
 <br/>
 
 
-<form name="myform">
-    <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkout()"/>
+<form name="myform" onsubmit= " return checkEmail()">
+    <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
     <p id="first_name"></p>
-    <input type="text" name="lastName" placeholder="last name" id="last"/>
+    <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
+    <p id="last_name"></p>
     <input type="text" name="phoneNumber" placeholder="phone number" id="phone" onkeyup="phonecheck()"/>
-    <p id="number"></p>
+    <p id="phone_number"></p>
     <input type="text" name="address" placeholder="address" id="address"/>
-    <input type="email" name="email" placeholder="email" id="email"/>
+    <p id="address_"></p>
+    <input type="email" name="email" placeholder="email" id="email" onkeyup="checkEmail()"/>
+    <p id="email_"></p>
     <select id="list"></select>
-    <button id="saveUser">save</button>
+    <input type="submit" id="saveUser"></input>
 </form>
 
 <div class="targetcus"></div>
