@@ -1,85 +1,117 @@
 $(document).ready(function () {
 
     $.ajax({
-        url:"/show",
-        type:"GET",
-        success:function (data) {
-            var a=[1,3,2];
-            a.sort();
-            console.log(a);
-            var a = 5;
-            for(let obj of data){
-                let $p=$("<p/>",{
-                    text:obj.id+" "+obj.name+" "+obj.price
+        url: "/showProduct",
+        type: "GET",
+        success: function (data) {
+            for (let obj of data) {
+                console.log(data);
+                let $p = $("<p/>", {
+                    text:  obj.name + " " + obj.price
                 });
                 console.log($p);
                 $('.target').append($p);
                 $('.target p').addClass("span");
-                // $('.target p').css("background-color","red");
 
             }
         },
-        error:function () {
-            alert("error");
+        error: function () {
+            alert("errorSHOW");
         }
 
     });
+});
 
 
+
+$('#SortByLowPrice ').click(function () {
+    $('.target').empty();
+    $.ajax({
+        url: '/SortByLowPrice',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $("<p>", {
+                    text: obj.name + " " + obj.price
+                });
+                $('.target').append($p);
+            }
+        },
+        error: function () {
+            console.log("sortbylowpriceERROR")
+        }
+    })
+});
+
+
+$("#SortByHighPrice").click(function () {
+    $('.target').empty();
+    $.ajax({
+        url: '/SortByHighPrice',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $("<p>", {
+                    text: obj.name + " " + obj.price
+                });
+                console.log($p);
+                $('.target').append($p);
+            }
+        },
+        error: function () {
+            console.log("sortbyhighpriceERROR")
+        }
+    })
 });
 
 
 
 
+$('#SortByDate').click(function () {
+    $('.target').empty();
+    $.ajax({
+        url: '/SortByAddingDate',
+        type: 'GET',
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $('<p>', {
+                    text: obj.id + " " + obj.name + " " + obj.price
+                });
+                console.log($p);
+                $('.target').append($p);
+            }
+        },
+        error: function () {
+            console.log("sortbyaddingdateERROR")
+        }
+    })
+});
 
 
-$('#saveBtn').click(function () {
-    var name=$('#name').val();
-    var description=$('#descr').val();
-    var price=$('#price').val();
-    console.log(name);
-    console.log(description);
-    var product={
-        name,
-        description,
-        price
+$('#search').click(function () {
+    var name = $("#name").val();
+    var product = {
+        name
     };
+
     console.log(product);
     $('.target').empty();
     $.ajax({
-        url:'/save',
-        type:'POST',
-        data:JSON.stringify(product),
-        contentType:'application/json',
+       url: '/findProduct',
+       method: 'POST',
+        data: JSON.stringify(product),
+        // async: true,
+        contentType: 'application/json',
         success:function (data) {
-            console.log(data);
-            for(let obj of data){
-                let $p=$("<p/>",{
-                    text:obj.id+" "+obj.name+" "+obj.price
+            for (let obj of data){
+                let $p = $('<p/> ',{
+                    text: obj.name+" "+obj.price
                 });
-                console.log($p);
-                $('.target').append($p)
+                $('.target').append($p);
             }
-        },
-        error:function () {
-            console.log("errooorr")
+
+        },error:function () {
+            alert("find error");
         }
-
-    })
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    });
+});

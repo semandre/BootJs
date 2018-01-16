@@ -49,17 +49,7 @@ public class ProductController {
     public List<Category> allCategory() {
         return categoryService.findAll();
     }
-
-    @GetMapping("/SortByLowPrice")
-    public List<Product> SortByLowPrice() {
-        return productService.sortByLowPrice();
-    }
-
-    @GetMapping("/SortByHighPrice")
-    public List<Product> SortByHighPrice() {
-        return productService.sortByHighPrice();
-    }
-
+    
     @GetMapping("/SortByAddingDate")
     public List<Product> SortByAddingDate() {
         return productService.sortByAddingDate();

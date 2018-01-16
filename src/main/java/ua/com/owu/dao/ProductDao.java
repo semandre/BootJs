@@ -2,6 +2,7 @@ package ua.com.owu.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ua.com.owu.entity.Product;
 
 import java.util.List;
@@ -18,4 +19,7 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     @Query(value = "From Product a join fetch a.category")
     List<Product> findAllWithCategory();
+
+    @Query(value = "SELECT * FROM Product p WHERE p.name LIKE :name%",nativeQuery = true)
+    List<Product> findByNames(@Param("name") String name);
 }

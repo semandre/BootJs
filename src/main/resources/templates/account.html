@@ -8,17 +8,22 @@
 <body>
 <br/>
 
-<input type="text" name="firstName" placeholder="first name" id="first"/>
-<input type="text" name="lastName" placeholder="last name" id="last"/>
-<input type="text" name="phoneNumber" placeholder="phone number" id="phone"/>
-<input type="text" name="address" placeholder="address" id="address"/>
-<input type="text" name="email" placeholder="email" id="email"/>
-<select id="list"></select>
-<button id="saveUser">save</button>
 
+<form name="myform">
+    <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkout()"/>
+    <p id="first_name"></p>
+    <input type="text" name="lastName" placeholder="last name" id="last"/>
+    <input type="text" name="phoneNumber" placeholder="phone number" id="phone" onkeyup="phonecheck()"/>
+    <p id="number"></p>
+    <input type="text" name="address" placeholder="address" id="address"/>
+    <input type="email" name="email" placeholder="email" id="email"/>
+    <select id="list"></select>
+    <button id="saveUser">save</button>
+</form>
 
 <div class="targetcus"></div>
 
 <script src="/acc.js"></script>
+<script src="/test.js"></script>
 </body>
 </html>

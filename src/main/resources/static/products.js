@@ -1,26 +1,5 @@
 $(document).ready(function () {
 
-    $.ajax({
-        url: "/show",
-        type: "GET",
-        success: function (data) {
-            for (let obj of data) {
-                console.log(data);
-                let $p = $("<p/>", {
-                    text: obj.id + " " + obj.name + " " + obj.price + " " + obj.category.categoryname
-                });
-                console.log($p);
-                $('.target').append($p);
-                $('.target p').addClass("span");
-
-
-            }
-        },
-        error: function () {
-            alert("errorSHOW");
-        }
-
-    });
     var out = '';
     $.ajax({
         url: '/allCategory',
@@ -38,6 +17,7 @@ $(document).ready(function () {
 
 $('#saveBtn').click(function () {
     var name = $('#name').val();
+    var count = $('#count').val();
     var description = $('#descr').val();
     var price = $('#price').val();
     var categoryname = $('#list').val();
@@ -47,6 +27,7 @@ $('#saveBtn').click(function () {
     };
     var product = {
         name,
+        count,
         description,
         price,
         category
@@ -66,7 +47,7 @@ $('#saveBtn').click(function () {
             console.log(data);
             for (let obj of data) {
                 let $p = $("<p/>", {
-                    text: obj.id + " " + obj.name + " " + obj.price + " " + obj.category.categoryname
+                    text: obj.id + " " + obj.name + " "+obj.count+" " + obj.price + " " + obj.category.categoryname
                 });
                 console.log($p);
                 $('.target').append($p)
@@ -80,63 +61,3 @@ $('#saveBtn').click(function () {
 
 });
 
-
-$('#SortByLowPrice').click(function () {
-    $('.target').empty();
-    $.ajax({
-        url: '/SortByLowPrice',
-        type: 'GET',
-        success: function (data) {
-            for (let obj of data) {
-                let $p = $("<p>", {
-                    text: obj.id + " " + obj.name + " " + obj.price
-                });
-                console.log($p);
-                $('.target').append($p);
-            }
-        },
-        error: function () {
-            console.log("sortbylowpriceERROR")
-        }
-    })
-});
-
-$('#SortByHighPrice').click(function () {
-    $('.target').empty();
-    $.ajax({
-        url: '/SortByHighPrice',
-        type: 'GET',
-        success: function (data) {
-            for (let obj of data) {
-                let $p = $("<p>", {
-                    text: obj.id + " " + obj.name + " " + obj.price
-                });
-                console.log($p);
-                $('.target').append($p);
-            }
-        },
-        error: function () {
-            console.log("sortbyhighpriceERROR")
-        }
-    })
-});
-
-$('#SortByAddingDate').click(function () {
-    $('.target').empty();
-    $.ajax({
-        url: '/SortByAddingDate',
-        type: 'GET',
-        success: function (data) {
-            for (let obj of data) {
-                let $p = $('<p>', {
-                    text: obj.id + " " + obj.name + " " + obj.price
-                });
-                console.log($p);
-                $('.target').append($p);
-            }
-        },
-        error: function () {
-            console.log("sortbyaddingdateERROR")
-        }
-    })
-});

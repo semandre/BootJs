@@ -8,6 +8,8 @@ import ua.com.owu.service.CustomerService;
 
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -16,11 +18,15 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void save(Customer customer) {
+        Pattern pattern = Pattern.compile("^\\+?(380)(\\d{9})");
+        Matcher matcher = pattern.matcher(customer.getPhoneNumber());
+
+        System.out.println(matcher.find());
         customerDao.save(customer);
     }
 
     @Override
     public List<Customer> findAll() {
-        return customerDao.findAll();
+        return customerDao.findAllWithCity();
     }
 }

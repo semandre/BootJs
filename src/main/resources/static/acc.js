@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var out = '';
     $.ajax({
@@ -6,11 +5,16 @@ $(document).ready(function () {
         type: 'POST',
         success: function (data) {
             for (var obj of data) {
-                out += '<option value="' + obj.cityName + '">' + obj.cityName+ '</option>';
+                out += '<option value="' + obj.cityName + '">' + obj.cityName + '</option>';
             }
             $('#list').html(out);
         }
     });
+    
+
+    
+    
+    
 });
 
 $('#saveUser').click(function () {
@@ -20,6 +24,8 @@ $('#saveUser').click(function () {
     var address = $('#address').val();
     var email = $('#email').val();
     var cityName = $('#list').val();
+    // var re = new RegExp("^\\+?(380)(\\d{9})");
+
     var city = {
         cityName
     };
@@ -32,8 +38,6 @@ $('#saveUser').click(function () {
         city
     };
 
-
-    console.log(customer);
     $('.targetcus').empty();
     $.ajax({
         url: '/saveUser',
@@ -45,7 +49,7 @@ $('#saveUser').click(function () {
             for (let obj of data) {
                 let $p = $("<p/>", {
                     text: obj.id + " " + obj.firstName + " " + obj.lastName + " "
-                    + obj.phoneNumber+ " " +obj.address+ " " +obj.email+ " "/* +obj.cityName*/
+                    + obj.phoneNumber + " " + obj.address + " " + obj.email + " " + obj.city.cityName
                 });
                 console.log($p);
                 $('.targetcus').append($p)

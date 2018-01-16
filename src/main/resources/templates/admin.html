@@ -2,11 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>admin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-admin page
+
 <br/>
+
+<input type="text" name="pName" placeholder="name" id="name"/>
+<input type="text" name="count" placeholder="count" id="count"/>
+<input type="text" name="description" placeholder="descr" id="descr"/>
+<input type="text" name="price" placeholder="price" id="price"/>
+<!--<input type="text" name="category" placerholder="category" id="category"/>-->
+<select id="list"></select>
+<button id="saveBtn">save</button>
+
+<button id="SortByAddingDate">SortByAddingDate</button>
+
+<div id="listprod"></div>
+
+
+<script src="/main.js"></script>
+<script src="/test.js"></script>
+<script src="/products.js"></script>
+
 
 </body>
 </html>
