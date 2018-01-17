@@ -10,11 +10,7 @@ $(document).ready(function () {
             $('#list').html(out);
         }
     });
-    
 
-    
-    
-    
 });
 
 $('#saveUser').click(function () {

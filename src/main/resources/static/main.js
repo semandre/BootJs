@@ -9,10 +9,23 @@ $(document).ready(function () {
                 let $p = $("<p/>", {
                     text:  obj.name + " " + obj.price
                 });
-                console.log($p);
+
+
+                // let $b = ("<button id='" + obj.id + " '>buy");
+                // $b.attachEvent('onclick', this.getId);
+
+
+                var btn = document.createElement('input')
+                btn.id = obj.id;
+                btn.type = 'button';
+                btn.value = 'buy';
+                btn.setAttribute('onclick', 'getId(this)');
+                document.body.appendChild(btn)
+
+
                 $('.target').append($p);
                 $('.target p').addClass("span");
-
+                // $('#btn').html($b);
             }
         },
         error: function () {
@@ -115,3 +128,9 @@ $('#search').click(function () {
         }
     });
 });
+
+
+function getId(obj) {
+    console.log(obj.id);
+
+}

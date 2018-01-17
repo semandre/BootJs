@@ -49,8 +49,9 @@ $('#saveBtn').click(function () {
                 let $p = $("<p/>", {
                     text: obj.id + " " + obj.name + " "+obj.count+" " + obj.price + " " + obj.category.categoryname
                 });
+
                 console.log($p);
-                $('.target').append($p)
+                $('.target').append($p);
             }
         },
         error: function () {

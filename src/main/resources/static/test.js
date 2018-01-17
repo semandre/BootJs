@@ -1,5 +1,6 @@
 $(document).ready(function () {
     console.log("AAAr");
+
     $("#saveUser").prop("disabled", true);
 
 
@@ -82,9 +83,9 @@ function phonecheck() {
 
 
 function checkEmail() {
-    path = document.myform;
     $("#email_").empty();
-    p_sender = $('#email').val();
+    p_sender =$('#email').val();
+
     var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/i;
     var valid = re.exec(p_sender);
     if (valid) {
@@ -100,8 +101,8 @@ function checkEmail() {
 
 
 function mainCheck() {
-
     var ck = (checkEmail() && checkFirst() && phonecheck() && checkLast());
     console.log(ck);
-    $("#saveUser").prop("disabled", !ck);
+    $("#saveUser").prop("disabled",!ck);
+
 }
