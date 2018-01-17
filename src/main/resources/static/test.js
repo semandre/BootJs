@@ -1,7 +1,15 @@
 $(document).ready(function () {
     console.log("AAAr");
-    $("#saveUser").prop("disabled",false);
+
+    $("#saveUser").prop("disabled", true);
+
+
 });
+
+$('#inputsCustomer').keyup(function () {
+    mainCheck();
+});
+
 
 function checkFirst() {
     $("#first_name").empty();
@@ -19,7 +27,7 @@ function checkFirst() {
         let pp = $('<p>Внесіть ваше імя</p>');
         $("#first_name").append(pp);
         // $("#saveUser").prop("disabled",true);
-       b = false;
+        b = false;
         return b;
 
     }
@@ -77,6 +85,7 @@ function phonecheck() {
 function checkEmail() {
     $("#email_").empty();
     p_sender =$('#email').val();
+
     var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/i;
     var valid = re.exec(p_sender);
     if (valid) {
@@ -86,14 +95,13 @@ function checkEmail() {
     } else {
         let pp = $('<p>Невірний формат email</p>');
         $("#email_").append(pp);
-    return false;
+        return false;
     }
 }
 
 
-function  mainCheck() {
-
-    var ck = (checkEmail()&&checkFirst()&&phonecheck()&&checkLast());
+function mainCheck() {
+    var ck = (checkEmail() && checkFirst() && phonecheck() && checkLast());
     console.log(ck);
     $("#saveUser").prop("disabled",!ck);
 
