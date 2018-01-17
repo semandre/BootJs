@@ -17,7 +17,7 @@ $(document).ready(function () {
     
 });
 
-$('#saveUser').submit(function () {
+$('#saveUser').click(function () {
     var firstName = $('#first').val();
     var lastName = $('#last').val();
     var phoneNumber = $('#phone').val();
