@@ -7,12 +7,10 @@ $(document).ready(function () {
             for (let obj of data) {
                 console.log(data);
                 let $p = $("<p/>", {
-                    text: obj.name + " " + obj.price
+                    text:  obj.name + " " + obj.price
                 });
-                // let $b = ("<button id='" + obj.id + "'>buy");
-                let $b = ("<button class='cartbtn'>buy");
-                // console.log($p);
-                $('.target').append($p).append($b);
+                console.log($p);
+                $('.target').append($p);
                 $('.target p').addClass("span");
 
             }
@@ -22,16 +20,9 @@ $(document).ready(function () {
         }
 
     });
-
 });
 
-$('.cartbtn').click(function () {
 
-
-
-    console.log("fuck");
-    window.alert("fuck");
-});
 
 $('#SortByLowPrice ').click(function () {
     $('.target').empty();
@@ -74,6 +65,8 @@ $("#SortByHighPrice").click(function () {
 });
 
 
+
+
 $('#SortByDate').click(function () {
     $('.target').empty();
     $.ajax({
@@ -104,20 +97,20 @@ $('#search').click(function () {
     console.log(product);
     $('.target').empty();
     $.ajax({
-        url: '/findProduct',
-        method: 'POST',
+       url: '/findProduct',
+       method: 'POST',
         data: JSON.stringify(product),
         // async: true,
         contentType: 'application/json',
-        success: function (data) {
-            for (let obj of data) {
-                let $p = $('<p/> ', {
-                    text: obj.name + " " + obj.price
+        success:function (data) {
+            for (let obj of data){
+                let $p = $('<p/> ',{
+                    text: obj.name+" "+obj.price
                 });
                 $('.target').append($p);
             }
 
-        }, error: function () {
+        },error:function () {
             alert("find error");
         }
     });
