@@ -15,6 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+
 public class Product {
 
     @Id
@@ -38,4 +39,5 @@ public class Product {
         this.addingdate = addingdate;
 
     }
+
 }

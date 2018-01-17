@@ -9,19 +9,22 @@
 <br/>
 
 
-<form name="myform" >
+
+<form name="myform" onchange="mainCheck()" >
+
     <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
     <p id="first_name"></p>
     <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
     <p id="last_name"></p>
-    <input type="text" name="phoneNumber" placeholder="phone number" id="phone" onkeyup="phonecheck()"/>
+    <input type="text" name="phoneNumber" placeholder="phone number" id="phone"  onkeyup="phonecheck()"/>
     <p id="phone_number"></p>
     <input type="text" name="address" placeholder="address" id="address"/>
     <p id="address_"></p>
-    <input type="email" name="email" placeholder="email" id="email" />
+    <input type="email" name="email" placeholder="email" id="email"  onkeyup="checkEmail()"/>
     <p id="email_"></p>
     <select id="list"></select>
-    <input type="submit" id="saveUser" disabled = "disabled"></input>
+
+    <input type="submit" id="saveUser"/>
 </form>
 
 <div class="targetcus"></div>

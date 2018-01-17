@@ -1,33 +1,53 @@
+$(document).ready(function () {
+    console.log("AAAr");
+    $("#saveUser").prop("disabled",true);
+});
+
 function checkFirst() {
     $("#first_name").empty();
     p_sender = document.myform.firstName.value.toString();
+    var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
             let pp = $('<p>Шмя має складатись віз 3 до 20 літер </p>');
             $("#first_name").append(pp);
-            return true;
+            // $("#saveUser").prop("disabled",false);
+            b = false;
+            return b;
         }
     } else {
         let pp = $('<p>Внесіть ваше імя</p>');
         $("#first_name").append(pp);
-        return false;
+        // $("#saveUser").prop("disabled",true);
+       b = false;
+        return b;
+
     }
+    return b;
+    console.log(b);
 }
 
 function checkLast() {
     $("#last_name").empty();
     p_sender = document.myform.firstName.value.toString();
+    var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
             let pp = $('<p>Шмя має складатись віз 3 до 20 літер </p>');
             $("#last_name").append(pp);
-            return true;
+            // $("#saveUser").prop("disabled",false);
+            b = false;
+            return b;
         }
     } else {
         let pp = $('<p>Внесіть ваше імя</p>');
         $("#last_name").append(pp);
-        return false;
+        // $("#saveUser").prop("disabled",true);
+        b = false;
+        return b;
     }
+    return b;
+
 }
 
 
@@ -39,14 +59,18 @@ function phonecheck() {
     if (valid) {
         let p = $('<p>Формат номеру  є корректним</p>');
         $("#phone_number").append(p);
+        // $("#saveUser").prop("disabled",false);
         return true;
     }
     else {
         let p = $('<p>Неправильний формат номеру </p>');
         $("#phone_number").append(p);
+        // $("#saveUser").prop("disabled",true);
         return false;
     }
+
     console.log(valid);
+    console.log(p_phone);
 }
 
 
@@ -59,12 +83,18 @@ function checkEmail() {
     if (valid) {
         let pp = $('<p>Email є корректним</p>');
         $("#email_").append(pp);
-        path.Submit.disabled=false;
+        return true;
     } else {
         let pp = $('<p>Невірний формат email</p>');
         $("#email_").append(pp);
-        path.Submit.disabled=false;
-
+    return false;
     }
 }
 
+
+function  mainCheck() {
+
+    var ck = (checkEmail()&&checkFirst()&&phonecheck()&&checkLast());
+    console.log(ck);
+    $("#saveUser").prop("disabled",!ck);
+}
