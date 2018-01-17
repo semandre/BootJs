@@ -7,7 +7,7 @@ $(document).ready(function () {
             for (let obj of data) {
                 console.log(data);
                 let $p = $("<p/>", {
-                    text:  obj.name + " " + obj.price
+                    text: obj.name + " " + obj.price
                 });
 
 
@@ -20,10 +20,10 @@ $(document).ready(function () {
                 btn.type = 'button';
                 btn.value = 'buy';
                 btn.setAttribute('onclick', 'getId(this)');
-                document.body.appendChild(btn)
+                // document.body.appendChild(btn)
 
 
-                $('.target').append($p);
+                $('.target').append($p).append(btn);
                 $('.target p').addClass("span");
                 // $('#btn').html($b);
             }
@@ -34,7 +34,6 @@ $(document).ready(function () {
 
     });
 });
-
 
 
 $('#SortByLowPrice ').click(function () {
@@ -78,8 +77,6 @@ $("#SortByHighPrice").click(function () {
 });
 
 
-
-
 $('#SortByDate').click(function () {
     $('.target').empty();
     $.ajax({
@@ -110,20 +107,20 @@ $('#search').click(function () {
     console.log(product);
     $('.target').empty();
     $.ajax({
-       url: '/findProduct',
-       method: 'POST',
+        url: '/findProduct',
+        method: 'POST',
         data: JSON.stringify(product),
         // async: true,
         contentType: 'application/json',
-        success:function (data) {
-            for (let obj of data){
-                let $p = $('<p/> ',{
-                    text: obj.name+" "+obj.price
+        success: function (data) {
+            for (let obj of data) {
+                let $p = $('<p/> ', {
+                    text: obj.name + " " + obj.price
                 });
                 $('.target').append($p);
             }
 
-        },error:function () {
+        }, error: function () {
             alert("find error");
         }
     });
@@ -132,5 +129,21 @@ $('#search').click(function () {
 
 function getId(obj) {
     console.log(obj.id);
+    var id = obj.id;
+    $.ajax({
+        url: 'addCart/'+obj.id+'',
+        type: 'GET',
+        data: JSON.stringify(id),
+        contentType:'application/json',
+        success: function (data) {
+            console.log(data);
+        },
+        error: function () {
+            console.log("errorAddCart");
+        }
+
+    });
+
 
 }
+

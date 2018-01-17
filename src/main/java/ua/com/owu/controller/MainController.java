@@ -21,6 +21,7 @@ public class MainController {
     public String account() {
         return "/account";
     }
-
+    @GetMapping("/cartBox")
+    public String cart(){return "/cart";}
 
 }

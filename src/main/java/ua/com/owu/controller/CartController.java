@@ -22,9 +22,12 @@ public class CartController {
 
 
     @GetMapping("/cart")
-    public List<Cart> showCart(@RequestBody Cart cart){
+    public List<Cart> showCart(){
         return cartService.findAll();
     }
+
+    @GetMapping("/findBySessionId")
+    public List<Cart> findBySeesionId(HttpSession SessionId){return cartService.findAllBySessionId(SessionId.getId());}
 
     @GetMapping("/addCart/{id}")
     public void addCart(@PathVariable int id, HttpSession session) {
@@ -32,7 +35,7 @@ public class CartController {
         List<Cart> carts = cartService.findAllBySessionId(session.getId());
         boolean b = true;
         for (Cart cart : carts) {
-            if (cart.getName() == product.getName()) {
+            if (cart.getName().equals(product.getName())) {
                 int quantity = cart.getQuantity() + 1;
                 cart.setQuantity(quantity);
                 cartService.update(quantity,product.getName(),session.getId());
