@@ -10,14 +10,10 @@ $(document).ready(function () {
             $('#list').html(out);
         }
     });
-    
 
-    
-    
-    
 });
 
-$('#saveUser').submit(function () {
+$('#saveUser').click(function () {
     var firstName = $('#first').val();
     var lastName = $('#last').val();
     var phoneNumber = $('#phone').val();

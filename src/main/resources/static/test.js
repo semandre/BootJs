@@ -1,11 +1,11 @@
 $(document).ready(function () {
     console.log("AAAr");
-    $("#saveUser").prop("disabled",true);
+    $("#saveUser").prop("disabled",false);
 });
 
 function checkFirst() {
     $("#first_name").empty();
-    p_sender = document.myform.firstName.value.toString();
+    p_sender = $('#first').val();
     var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
@@ -29,7 +29,7 @@ function checkFirst() {
 
 function checkLast() {
     $("#last_name").empty();
-    p_sender = document.myform.firstName.value.toString();
+    p_sender = $('#last').val();
     var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
@@ -54,7 +54,7 @@ function checkLast() {
 function phonecheck() {
     $("#phone_number").empty();
     var re = /^[0-9\-\+]{12}$/;
-    p_phone = document.myform.phoneNumber.value.toString();
+    p_phone = $('#phone').val();
     var valid = re.exec(p_phone);
     if (valid) {
         let p = $('<p>Формат номеру  є корректним</p>');
@@ -75,9 +75,8 @@ function phonecheck() {
 
 
 function checkEmail() {
-    path = document.myform;
     $("#email_").empty();
-    p_sender = document.myform.email.value.toString();
+    p_sender =$('#email').val();
     var re = /^[\w-\.]+@[\w-]+\.[a-z]{2,3}$/i;
     var valid = re.exec(p_sender);
     if (valid) {
@@ -97,4 +96,5 @@ function  mainCheck() {
     var ck = (checkEmail()&&checkFirst()&&phonecheck()&&checkLast());
     console.log(ck);
     $("#saveUser").prop("disabled",!ck);
+
 }
