@@ -11,19 +11,10 @@ $(document).ready(function () {
                 });
 
 
-                // let $b = ("<button id='" + obj.id + " '>buy");
-                // $b.attachEvent('onclick', this.getId);
+                let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
 
 
-                var btn = document.createElement('input')
-                btn.id = obj.id;
-                btn.type = 'button';
-                btn.value = 'buy';
-                btn.setAttribute('onclick', 'getId(this)');
-                // document.body.appendChild(btn)
-
-
-                $('.target').append($p).append(btn);
+                $('.target').append($p).append($b);
                 $('.target p').addClass("span");
                 // $('#btn').html($b);
             }
@@ -131,10 +122,10 @@ function getId(obj) {
     console.log(obj.id);
     var id = obj.id;
     $.ajax({
-        url: 'addCart/'+obj.id+'',
+        url: 'addCart/' + obj.id + '',
         type: 'GET',
         data: JSON.stringify(id),
-        contentType:'application/json',
+        contentType: 'application/json',
         success: function (data) {
             console.log(data);
         },
