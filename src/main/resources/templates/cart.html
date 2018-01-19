@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
     <title>cartBox</title>
 </head>
 
 <body>
-<div id="cartsProduct"></div>
+
+<div id="cartsProduct" ng-controller="carts">
+    <button ng-click="buy()">buy</button>
+    <div ng-repeat="cart in cartsArray track by $index">
+    <p>{{cart}}</p>
+    <button ng-click="removeOne($index)">remove</button>
+    <button ng-click="increment($index)">+</button>
+    <button ng-click="decrement($index)">-</button>
+    </div>
+ </div>
 
 
 <script src="/cartProduct.js"></script>

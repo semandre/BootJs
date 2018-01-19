@@ -47,42 +47,48 @@ public class CartController {
             cartService.save(cart);
         }
     }
-
-    @GetMapping("/remove/{id}")
-    public void remove(@PathVariable("id") int id, HttpSession session){
-        List<Cart> carts = cartService.findAllBySessionId(session.getId());
-        for (Cart cart : carts) {
-            if(cart.getId()==id){
-                cartService.remove(id);
-            }
-        }
+    @PostMapping("/addCarts")
+    public void addListCart(@RequestBody List<Cart> carts){
+       for(Cart cart:carts){
+            cartService.save(cart);
+       }
     }
 
-    @GetMapping("/increment/{id}")
-        public void increment(@PathVariable("id") int id,HttpSession session){
-        List<Cart> carts = cartService.findAllBySessionId(session.getId());
-        for (Cart cart : carts) {
-            if (cart.getId()==id){
-                int quantity = cart.getQuantity()+1;
-                cart.setQuantity(quantity);
-                cartService.updateQuantity(quantity,session.getId());
-            }
-        }
-    }
-
-    @GetMapping("decrement/{id}")
-    public void decrement(@PathVariable int id, HttpSession session){
-            List<Cart> carts = cartService.findAllBySessionId(session.getId());
-        for (Cart cart : carts) {
-            if(cart.getId()==id){
-                int quantity = cart.getQuantity()-1;
-                cart.setQuantity(quantity);
-                if(quantity==0) {
-                    cart.setQuantity(1);
-                }
-                cartService.updateQuantity(quantity,session.getId());
-            }
-        }
-    }
+//    @GetMapping("/remove/{id}")
+//    public void remove(@PathVariable("id") int id, HttpSession session){
+//        List<Cart> carts = cartService.findAllBySessionId(session.getId());
+//        for (Cart cart : carts) {
+//            if(cart.getId()==id){
+//                cartService.remove(id);
+//            }
+//        }
+//    }
+//
+//    @GetMapping("/increment/{id}")
+//        public void increment(@PathVariable("id") int id,HttpSession session){
+//        List<Cart> carts = cartService.findAllBySessionId(session.getId());
+//        for (Cart cart : carts) {
+//            if (cart.getId()==id){
+//                int quantity = cart.getQuantity()+1;
+//                cart.setQuantity(quantity);
+//                cartService.updateQuantity(quantity,session.getId());
+//            }
+//        }
+//    }
+//
+//    @GetMapping("decrement/{id}")
+//    public void decrement(@PathVariable int id, HttpSession session){
+//            List<Cart> carts = cartService.findAllBySessionId(session.getId());
+//        for (Cart cart : carts) {
+//            if(cart.getId()==id){
+//                int quantity = cart.getQuantity()-1;
+//                cart.setQuantity(quantity);
+//                if(quantity==0) {
+//                    cart.setQuantity(1);
+//                }
+//                cartService.updateQuantity(quantity,session.getId());
+//            }
+//        }
+//    }
 
 }
