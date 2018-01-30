@@ -35,45 +35,47 @@ angular.module("myApp", [])
 
 angular.module("myApp", [])
     .controller("carts", function ($scope, $http) {
-        $http.get("cart").then(function (response) {
-            console.log(response.data);
-            $scope.cartsArray = response.data;
-            $scope.removeOne = function ($index) {
-                console.log("delete" + $index);
-                // $scope.cartsArray.delete(id);
-                $scope.cartsArray.splice($index,1);
-
-            }
-            $scope.increment= function ($index) {
-                console.log("increment" + $index);
-                var a = $scope.cartsArray[$index].quantity;
-                $scope.cartsArray[$index].quantity = a+1;
-            }
-            $scope.decrement= function ($index) {
-                console.log("decrement" + $index);
-                var a = $scope.cartsArray[$index].quantity;
-                if(a>0){
-                    $scope.cartsArray[$index].quantity = a-1;
-                }
-
-            }
-            //doesnt work
-            $scope.buy= function () {
-                $http.post({
-                    url:'addCarts',
-                    type:'POST',
-                    // data: JSON.stringify($scope.cartsArray),
-                    data: angular.toJson($scope.cartsArray),
-                    // contentType: 'application/json'
-                    // headers:{'Content-Type':'application/json'}
-                    responseType:'json'
-                }).success(function () {
-                    console.log("buy")
-                })
+        // $http.get("cart").then(function (response) {
+        //     console.log(response.data);
+        //     $scope.cartsArray = response.data;
+        // });
+        var storedNames = JSON.parse(localStorage.getItem("carts"));
+        console.log(storedNames);
+        $scope.cartsArray = storedNames;
 
 
+        $scope.removeOne = function ($index) {
+            console.log("delete" + $index);
+            // $scope.cartsArray.delete(id);
+            $scope.cartsArray.splice($index, 1);
+
+        }
+        $scope.increment = function ($index) {
+            console.log("increment" + $index);
+            var a = $scope.cartsArray[$index].quantity;
+            $scope.cartsArray[$index].quantity = a + 1;
+        }
+        $scope.decrement = function ($index) {
+            console.log("decrement" + $index);
+            var a = $scope.cartsArray[$index].quantity;
+            if (a > 1) {
+                $scope.cartsArray[$index].quantity = a - 1;
             }
-        });
+
+        }
+
+        $scope.buy = function () {
+            var config = {
+                headers: {'Content-Type': 'application/json'}
+            };
+
+            $http.post('addCarts', $scope.cartsArray, config).then(function () {
+                console.log("succses");
+            });
+
+
+        }
+
 
         // $scope.btnInput;
 

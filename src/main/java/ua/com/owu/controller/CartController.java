@@ -22,15 +22,17 @@ public class CartController {
 
 
     @GetMapping("/cart")
-    public List<Cart> showCart(){
+    public List<Cart> showCart() {
         return cartService.findAll();
     }
 
     @GetMapping("/findBySessionId")
-    public List<Cart> findBySeesionId(HttpSession SessionId){return cartService.findAllBySessionId(SessionId.getId());}
+    public List<Cart> findBySeesionId(HttpSession SessionId) {
+        return cartService.findAllBySessionId(SessionId.getId());
+    }
 
     @GetMapping("/addCart/{id}")
-    public void addCart(@PathVariable int id, HttpSession session) {
+    public Cart addCart(@PathVariable int id, HttpSession session) {
         Product product = productService.findById(id);
         List<Cart> carts = cartService.findAllBySessionId(session.getId());
         boolean b = true;
@@ -38,20 +40,27 @@ public class CartController {
             if (cart.getName().equals(product.getName())) {
                 int quantity = cart.getQuantity() + 1;
                 cart.setQuantity(quantity);
-                cartService.update(quantity,product.getName(),session.getId());
+//                cartService.update(quantity,product.getName(),session.getId());
                 b = false;
+
             }
         }
         if (b) {
-            Cart cart = new Cart(1,product.getName(),product.getPrice(),session.getId());
-            cartService.save(cart);
+            Cart cart = new Cart(1, product.getName(), product.getPrice(), session.getId());
+//            cartService.save(cart);
+            return cart;
         }
+        return null;
     }
+
     @PostMapping("/addCarts")
-    public void addListCart(@RequestBody List<Cart> carts){
-       for(Cart cart:carts){
-            cartService.save(cart);
-       }
+    public void addListCart(@RequestBody List<Cart> carts) {
+        for (Cart cart : carts) {
+            System.out.println("-------------");
+            System.out.println(cart);
+            System.out.println("-------------");
+//            cartService.save(cart);
+        }
     }
 
 //    @GetMapping("/remove/{id}")
