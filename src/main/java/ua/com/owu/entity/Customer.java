@@ -33,8 +33,8 @@ public class Customer {
     @ManyToOne( fetch = FetchType.LAZY)
     private City city;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "cart")
-    private List<Cart> cart;
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "customer")
+    private List<Cart> carts;
 
 
     public Customer(String firstName, String lastName, String phoneNumber, String address, String email) {
@@ -45,14 +45,14 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String firstName, String lastName, String phoneNumber, String address, String email, Date orderDate, List<Cart> cart) {
+    public Customer(String firstName, String lastName, String phoneNumber, String address, String email, Date orderDate, List<Cart> carts) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
         this.orderDate = orderDate;
-        this.cart = cart;
+        this.carts = carts;
     }
 }
 

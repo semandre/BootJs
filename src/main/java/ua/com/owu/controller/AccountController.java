@@ -30,7 +30,7 @@ public class AccountController {
         customer.setCity(city);
         customerService.save(customer);
         System.out.println("----------");
-        System.out.println(customer);
+        System.out.println(customer.getCarts());
         System.out.println("----------");
         return customerService.findAll();
     }
