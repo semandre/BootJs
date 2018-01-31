@@ -1,31 +1,3 @@
-// $(document).ready(function () {
-//     $.ajax({
-//         url: 'cart',
-//         type: 'GET',
-//         success: function (data) {
-//             console.log(data);
-//             for (let obj of data){
-//                 let $p = $('<p/>',{
-//                     text: "id: "+obj.id + " name: " + obj.name + " price: " + obj.price + " quantity " + obj.quantity
-//                 });
-//                 console.log($p);
-//                 let $br = ("<input type='button' ng-model='btnInput' onclick='remove(this)' value='remove' id='" + obj.id + " '>");
-//                 let $bp = ("<input type='button' onclick='increment(this)' value='+' id='" + obj.id + " '>");
-//                 let $bm = ("<input type='button' onclick='decrement(this)' value='-' id='" + obj.id + " '>");
-//
-//                 $('#cartsProduct').append($p).append($br).append($bp).append($bm);
-//             }
-//         },
-//         error:function () {
-//             window.alert("cartsEROR");
-//         }
-//     })
-// });
-//
-// function remove() {
-//
-// }
-
 
 angular.module("myApp", [])
     .controller("first", function ($scope) {
@@ -48,18 +20,21 @@ angular.module("myApp", [])
             console.log("delete" + $index);
             // $scope.cartsArray.delete(id);
             $scope.cartsArray.splice($index, 1);
+            localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
 
         }
         $scope.increment = function ($index) {
             console.log("increment" + $index);
             var a = $scope.cartsArray[$index].quantity;
             $scope.cartsArray[$index].quantity = a + 1;
+            localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
         }
         $scope.decrement = function ($index) {
             console.log("decrement" + $index);
             var a = $scope.cartsArray[$index].quantity;
             if (a > 1) {
                 $scope.cartsArray[$index].quantity = a - 1;
+                localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
             }
 
         }
