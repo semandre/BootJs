@@ -36,7 +36,9 @@ public class AccountController {
                         customer.getEmail().equals(customerIt.getEmail()) &&
                         customer.getPhoneNumber().equals(customerIt.getPhoneNumber())){
                         b = false;
-                        customerService.update(customer.getAddress(),customer.getFirstName(),customer.getLastName());
+                        customerService.update(customer.getAddress(),customer.getFirstName(),customer.getLastName(),customer.getEmail());
+                        customerService.delete(customerIt.getId());
+                        customerService.save(customer);
                         System.out.println(customerIt.getAddress());
                 }
         }
