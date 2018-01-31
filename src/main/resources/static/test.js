@@ -17,7 +17,7 @@ function checkFirst() {
     var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
-            let pp = $('<p>Шмя має складатись віз 3 до 20 літер </p>');
+            let pp = $('<p>Імя має складатись від 3 до 20 літер </p>');
             $("#first_name").append(pp);
             // $("#saveUser").prop("disabled",false);
             b = false;
@@ -41,7 +41,7 @@ function checkLast() {
     var b = true;
     if (p_sender != '') {
         if (p_sender.length < 3 || p_sender.length > 20) {
-            let pp = $('<p>Шмя має складатись віз 3 до 20 літер </p>');
+            let pp = $('<p>Імя має складатись від 3 до 20 літер </p>');
             $("#last_name").append(pp);
             // $("#saveUser").prop("disabled",false);
             b = false;
