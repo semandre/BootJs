@@ -31,8 +31,6 @@ $('#saveBtn').click(function () {
         description,
         price,
         category
-
-        // addingDate
     };
 
 

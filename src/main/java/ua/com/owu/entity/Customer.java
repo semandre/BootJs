@@ -26,7 +26,6 @@ public class Customer {
     private String phoneNumber;
     private String address;
     private String email;
-//    @Temporal(javax.persistence.TemporalType.DATE)
     private  Date orderDate;
 
 //    @JsonBackReference

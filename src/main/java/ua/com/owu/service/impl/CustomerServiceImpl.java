@@ -19,10 +19,6 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void save(Customer customer) {
-        Pattern pattern = Pattern.compile("^\\+?(380)(\\d{9})");
-        Matcher matcher = pattern.matcher(customer.getPhoneNumber());
-
-        System.out.println(matcher.find());
         customerDao.save(customer);
     }
 
@@ -34,5 +30,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> findAll() {
         return customerDao.findAllWithCity();
+    }
+
+    @Override
+    public Customer findOne(int id) {
+        return customerDao.findOne(id);
     }
 }

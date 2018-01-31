@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Setter
-@ToString
+@ToString(exclude = "customer")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,6 @@ public class Cart {
     private String name;
     private double price;
     private String sessionId;
-
 
     @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
     public Customer customer;

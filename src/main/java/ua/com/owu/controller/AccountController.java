@@ -28,6 +28,7 @@ public class AccountController {
         customer.setOrderDate(date);
         City city  = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
+
         List<Customer> customerList = customerService.findAll();
         boolean b = true;
         for(Customer customerIt : customerList){
@@ -43,8 +44,6 @@ public class AccountController {
         if(b){
             customerService.save(customer);
         }
-
-
 
         System.out.println("----------");
         System.out.println(customer.getCarts());

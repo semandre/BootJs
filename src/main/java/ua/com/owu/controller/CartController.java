@@ -33,23 +33,23 @@ public class CartController {
 
     @GetMapping("/addCart/{id}")
     public Cart addCart(@PathVariable int id, HttpSession session) {
-        Product product = productService.findById(id);
-        List<Cart> carts = cartService.findAllBySessionId(session.getId());
-        boolean b = true;
-        for (Cart cart : carts) {
-            if (cart.getName().equals(product.getName())) {
-                int quantity = cart.getQuantity() + 1;
-                cart.setQuantity(quantity);
-//                cartService.update(quantity,product.getName(),session.getId());
-                b = false;
-
-            }
-        }
-        if (b) {
-            Cart cart = new Cart(1, product.getName(), product.getPrice(), session.getId());
-//            cartService.save(cart);
-            return cart;
-        }
+//        Product product = productService.findById(id);
+//        List<Cart> carts = cartService.findAllBySessionId(session.getId());
+//        boolean b = true;
+//        for (Cart cart : carts) {
+//            if (cart.getName().equals(product.getName())) {
+//                int quantity = cart.getQuantity() + 1;
+//                cart.setQuantity(quantity);
+////                cartService.update(quantity,product.getName(),session.getId());
+//                b = false;
+//
+//            }
+//        }
+//        if (b) {
+//            Cart cart = new Cart(1, product.getName(), product.getPrice(), session.getId());
+////            cartService.save(cart);
+//            return cart;
+//        }
         return null;
     }
 

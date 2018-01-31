@@ -38,10 +38,6 @@ public class ProductController {
         Category category = categoryService.findOne(product.getCategory().getCategoryname());
         product.setCategory(category);
         productService.save(product);
-        System.out.println("--------------");
-        System.out.println(product);
-        System.out.println("--------------");
-//        return productService.findAllWithCategory();
         return productService.findAll();
     }
 

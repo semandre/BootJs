@@ -10,5 +10,6 @@ public interface CustomerService {
     void save(Customer customer);
     void update(String address, String firstName, String lastName);
     List<Customer> findAll();
+    Customer findOne(int id);
 
 }
