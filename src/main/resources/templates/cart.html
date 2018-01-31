@@ -12,12 +12,13 @@
 <div id="cartsProduct" ng-controller="carts">
     <!--<button ng-click="buy()">buy</button>-->
     <a href="account"><button>Купити</button></a>
-    <div ng-repeat="cart in cartsArray track by $index ">
+    <div ng-repeat="cart in cartsArray track by $index">
     <p>{{cart.name}} {{cart.price}}</p>
     <button ng-click="removeOne($index)">remove</button>
     <button ng-click="increment($index)">+</button>
         {{cart.quantity}}
-    <button ng-click="decrement($index)">-</button>   </div>
+    <button ng-click="decrement($index)">-</button>
+    </div>
  </div>
 
 

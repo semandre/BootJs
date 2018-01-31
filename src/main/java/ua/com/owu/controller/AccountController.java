@@ -3,8 +3,10 @@ package ua.com.owu.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ua.com.owu.dao.CityDao;
+import ua.com.owu.entity.Cart;
 import ua.com.owu.entity.City;
 import ua.com.owu.entity.Customer;
+import ua.com.owu.service.CartService;
 import ua.com.owu.service.CityService;
 import ua.com.owu.service.CustomerService;
 
@@ -20,6 +22,9 @@ public class AccountController {
     @Autowired
     private CityService cityService;
 
+    @Autowired
+    private CartService cartService;
+
 
 
     @PostMapping("/saveUser")
@@ -28,7 +33,11 @@ public class AccountController {
         customer.setOrderDate(date);
         City city  = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
+        List<Cart> carts = customer.getCarts();
 
+        for (Cart cart : carts) {
+            cart.setCustomer(customer);
+        }
         List<Customer> customerList = customerService.findAll();
         boolean b = true;
         for(Customer customerIt : customerList){

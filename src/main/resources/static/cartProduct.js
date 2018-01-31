@@ -7,14 +7,10 @@ angular.module("myApp", [])
 
 angular.module("myApp", [])
     .controller("carts", function ($scope, $http) {
-        var storedNames = JSON.parse(localStorage.getItem("carts"));
-        console.log(storedNames);
-        $scope.cartsArray = storedNames;
-
+        $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
         $scope.removeOne = function ($index) {
             console.log("delete" + $index);
-            // $scope.cartsArray.delete(id);
             $scope.cartsArray.splice($index, 1);
             localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
 

@@ -19,7 +19,7 @@ public class Cart {
     private String sessionId;
 
     @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
-    public Customer customer;
+    private Customer customer;
 
     public Cart(int quantity, String name, double price, String sessionId) {
         this.quantity = quantity;
@@ -54,5 +54,9 @@ public class Cart {
 
     public int getId() {
         return id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 }

@@ -161,9 +161,7 @@ function getId(obj) {
                             carts.push(data);
                             checked = false;
                         }
-
                     }
-
                 }
                 if (a == carts.length) {
                     console.log("i==carts.length");
