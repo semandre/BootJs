@@ -2,10 +2,7 @@ package ua.com.owu.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -21,11 +18,23 @@ public class Cart {
     private double price;
     private String sessionId;
 
+
+    @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+    public Customer customer;
+
     public Cart(int quantity, String name, double price, String sessionId) {
         this.quantity = quantity;
         this.name = name;
         this.price = price;
         this.sessionId = sessionId;
+    }
+
+    public Cart(int quantity, String name, double price, String sessionId, Customer customer) {
+        this.quantity = quantity;
+        this.name = name;
+        this.price = price;
+        this.sessionId = sessionId;
+        this.customer = customer;
     }
 
     public String getName() {

@@ -9,6 +9,7 @@ import sun.util.calendar.BaseCalendar;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -32,16 +33,26 @@ public class Customer {
     @ManyToOne( fetch = FetchType.LAZY)
     private City city;
 
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "cart")
+    private List<Cart> cart;
 
-    public Customer(String firstName, String lastName, String phoneNumber, String address, String email/*, City city*/) {
+
+    public Customer(String firstName, String lastName, String phoneNumber, String address, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.email = email;
-//        this.city = city;
     }
 
-
+    public Customer(String firstName, String lastName, String phoneNumber, String address, String email, Date orderDate, List<Cart> cart) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.email = email;
+        this.orderDate = orderDate;
+        this.cart = cart;
+    }
 }
 

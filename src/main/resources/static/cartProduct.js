@@ -7,10 +7,6 @@ angular.module("myApp", [])
 
 angular.module("myApp", [])
     .controller("carts", function ($scope, $http) {
-        // $http.get("cart").then(function (response) {
-        //     console.log(response.data);
-        //     $scope.cartsArray = response.data;
-        // });
         var storedNames = JSON.parse(localStorage.getItem("carts"));
         console.log(storedNames);
         $scope.cartsArray = storedNames;
@@ -22,13 +18,13 @@ angular.module("myApp", [])
             $scope.cartsArray.splice($index, 1);
             localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
 
-        }
+        };
         $scope.increment = function ($index) {
             console.log("increment" + $index);
             var a = $scope.cartsArray[$index].quantity;
             $scope.cartsArray[$index].quantity = a + 1;
             localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
-        }
+        };
         $scope.decrement = function ($index) {
             console.log("decrement" + $index);
             var a = $scope.cartsArray[$index].quantity;
@@ -37,7 +33,7 @@ angular.module("myApp", [])
                 localStorage.setItem("carts",JSON.stringify($scope.cartsArray));
             }
 
-        }
+        };
 
         $scope.buy = function () {
             var config = {
@@ -47,13 +43,7 @@ angular.module("myApp", [])
             $http.post('addCarts', $scope.cartsArray, config).then(function () {
                 console.log("succses");
             });
-
-
         }
-
-
-        // $scope.btnInput;
-
     });
 
 

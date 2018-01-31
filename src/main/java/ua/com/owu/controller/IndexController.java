@@ -19,7 +19,6 @@ public class IndexController {
         return productService.findAll();
     }
 
-
     @GetMapping("/SortByLowPrice")
     public List<Product> SortByLowPrice() {
         return productService.sortByLowPrice();
