@@ -28,7 +28,24 @@ public class AccountController {
         customer.setOrderDate(date);
         City city  = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
-        customerService.save(customer);
+        List<Customer> customerList = customerService.findAll();
+        boolean b = true;
+        for(Customer customerIt : customerList){
+                if(     customer.getFirstName().equals(customerIt.getFirstName()) &&
+                        customer.getLastName().equals(customerIt.getLastName()) &&
+                        customer.getEmail().equals(customerIt.getEmail()) &&
+                        customer.getPhoneNumber().equals(customerIt.getPhoneNumber())){
+                        b = false;
+                        customerService.update(customer.getAddress(),customer.getFirstName(),customer.getLastName());
+                        System.out.println(customerIt.getAddress());
+                }
+        }
+        if(b){
+            customerService.save(customer);
+        }
+
+
+
         System.out.println("----------");
         System.out.println(customer.getCarts());
         System.out.println("----------");

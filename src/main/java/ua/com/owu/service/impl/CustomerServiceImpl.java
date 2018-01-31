@@ -3,6 +3,7 @@ package ua.com.owu.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ua.com.owu.dao.CustomerDao;
+import ua.com.owu.entity.Cart;
 import ua.com.owu.entity.Customer;
 import ua.com.owu.service.CustomerService;
 
@@ -23,6 +24,11 @@ public class CustomerServiceImpl implements CustomerService {
 
         System.out.println(matcher.find());
         customerDao.save(customer);
+    }
+
+    @Override
+    public void update(String address,String firstName,String lastName) {
+        customerDao.update(address,firstName,lastName);
     }
 
     @Override
