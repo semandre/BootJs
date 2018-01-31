@@ -23,8 +23,13 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void update(String address,String firstName,String lastName) {
-        customerDao.update(address,firstName,lastName);
+    public void update(String address,String firstName,String lastName,String email) {
+        customerDao.update(address,firstName,lastName,email);
+    }
+
+    @Override
+    public void delete(int id) {
+        customerDao.delete(id);
     }
 
     @Override
