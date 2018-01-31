@@ -29,6 +29,9 @@ public class AccountController {
         City city  = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
         customerService.save(customer);
+        System.out.println("----------");
+        System.out.println(customer);
+        System.out.println("----------");
         return customerService.findAll();
     }
 

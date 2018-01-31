@@ -20,6 +20,7 @@ $('#saveUser').click(function () {
     var address = $('#address').val();
     var email = $('#email').val();
     var cityName = $('#list').val();
+    var carts = JSON.parse(localStorage.getItem("carts"));
     var city = {
         cityName
     };
@@ -29,7 +30,8 @@ $('#saveUser').click(function () {
         phoneNumber,
         address,
         email,
-        city
+        city,
+        carts
     };
 
     $('.targetcus').empty();
@@ -40,15 +42,15 @@ $('#saveUser').click(function () {
         contentType: 'application/json',
         success: function (data) {
             console.log(data);
-            for (let obj of data) {
-                let $p = $("<p/>", {
-                    text: obj.id + " " + obj.firstName + " " + obj.lastName + " "
-                    + obj.phoneNumber + " " + obj.address + " " + obj.email + " " + obj.city.cityName
-                });
-                console.log($p);
-                $('.targetcus').append($p)
-
-            }
+            // for (let obj of data) {
+            //     let $p = $("<p/>", {
+            //         text: obj.id + " " + obj.firstName + " " + obj.lastName + " "
+            //         + obj.phoneNumber + " " + obj.address + " " + obj.email + " " + obj.city.cityName
+            //     });
+            //     console.log($p);
+            //     $('.targetcus').append($p)
+            //
+            // }
         },
         error: function () {
             console.log("errooorrSAVE")

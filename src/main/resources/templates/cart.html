@@ -10,7 +10,7 @@
 <body>
 
 <div id="cartsProduct" ng-controller="carts">
-    <button ng-click="buy()">buy</button>
+    <a href="account"><button ng-click="buy()">buy</button></a>
     <div ng-repeat="cart in cartsArray track by $index">
     <p>{{cart.name}} {{cart.price}}</p>
     <button ng-click="removeOne($index)">remove</button>

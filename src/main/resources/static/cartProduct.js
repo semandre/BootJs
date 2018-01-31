@@ -40,15 +40,15 @@ angular.module("myApp", [])
         }
 
         $scope.buy = function () {
-            var config = {
-                headers: {'Content-Type': 'application/json'}
-            };
+            // var config = {
+            //     headers: {'Content-Type': 'application/json'}
+            // };
+            //
+            // $http.post('addCarts', $scope.cartsArray, config).then(function () {
+            //     console.log("succses");
+            // });
 
-            $http.post('addCarts', $scope.cartsArray, config).then(function () {
-                console.log("succses");
-            });
-
-
+        console.log("buy log");
         }
 
 
