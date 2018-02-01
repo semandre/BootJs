@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -7,11 +7,6 @@
 </head>
 <body>
 
-
-<!--<select>-->
-<!--<option id="SortByLowPrice" >За зростанням  ціни</option>-->
-<!--<option id="SortByHighPrice" >За зменшенням  ціни</option>-->
-<!--</select>-->
 <button id="SortByLowPrice">За зростанням ціни</button>
 <button id="SortByHighPrice">За зменшенням ціни</button>
 
@@ -21,6 +16,12 @@
 
 <div class="target"></div>
 <div id="btn"></div>
+
+
+<div th:include="/fragments/frag::#pred" ></div>
+<div th:include="/fragments/frag::style"/>
+<div th:include="/fragments/frag::static"/>
+
 
 <script src="/main.js"></script>
 <script src="/test.js"></script>
