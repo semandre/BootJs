@@ -1,13 +1,11 @@
 package ua.com.owu.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
-import sun.util.calendar.BaseCalendar;
+
 
 import javax.persistence.*;
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -54,5 +52,12 @@ public class Customer {
         this.carts = carts;
     }
 
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
+    }
 }
 
