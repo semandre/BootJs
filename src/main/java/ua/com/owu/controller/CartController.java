@@ -20,7 +20,6 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-
     @GetMapping("/cart")
     public List<Cart> showCart() {
         return cartService.findAll();
@@ -97,5 +96,4 @@ public class CartController {
 //            }
 //        }
 //    }
-
 }

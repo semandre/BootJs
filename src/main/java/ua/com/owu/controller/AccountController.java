@@ -26,34 +26,39 @@ public class AccountController {
     private CartService cartService;
 
 
-
     @PostMapping("/saveUser")
-    public List<Customer> saveUser(@RequestBody Customer customer){
+    public List<Customer> saveUser(@RequestBody Customer customer) {
         Date date = new Date();
         customer.setOrderDate(date);
-        City city  = cityService.findOne(customer.getCity().getCityName());
+        City city = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
         List<Cart> carts = customer.getCarts();
-
+        List<Customer> customerList = customerService.findAll();
         for (Cart cart : carts) {
             cart.setCustomer(customer);
         }
-        List<Customer> customerList = customerService.findAll();
         boolean b = true;
-        for(Customer customerIt : customerList){
-                if(     customer.getFirstName().equals(customerIt.getFirstName()) &&
-                        customer.getLastName().equals(customerIt.getLastName()) &&
-                        customer.getEmail().equals(customerIt.getEmail()) &&
-                        customer.getPhoneNumber().equals(customerIt.getPhoneNumber())){
-                        b = false;
-                        customerService.update(customer.getAddress(),customer.getFirstName(),customer.getLastName(),customer.getEmail());
-                        customerService.delete(customerIt.getId());
-                        customerService.save(customer);
-                        System.out.println(customerIt.getAddress());
+        for (Customer customerIt : customerList) {
+            if (customer.getFirstName().equals(customerIt.getFirstName()) &&
+                    customer.getLastName().equals(customerIt.getLastName()) &&
+                    customer.getEmail().equals(customerIt.getEmail()) &&
+                    customer.getPhoneNumber().equals(customerIt.getPhoneNumber())) {
+                b = false;
+//                customerService.update(customer.getAddress(), customer.getFirstName(), customer.getLastName(), customer.getEmail());
+                for (Cart cart : carts) {
+                    cartService.save(cart);
+                    cart.setCustomer(customer);
                 }
+
+//                customerService.delete(customerIt.getId());
+//                customerService.save(customer);
+                System.out.println(customerIt.getAddress());
+            }
         }
-        if(b){
+        if (b) {
+
             customerService.save(customer);
+
         }
 
         System.out.println("----------");
@@ -62,9 +67,8 @@ public class AccountController {
         return customerService.findAll();
     }
 
-
-    @PostMapping ("/showCity")
-    public List<City> showCity(){
-        return  cityService.findAll();
+    @PostMapping("/showCity")
+    public List<City> showCity() {
+        return cityService.findAll();
     }
 }

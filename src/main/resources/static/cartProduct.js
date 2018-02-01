@@ -1,7 +1,15 @@
 
 angular.module("myApp", [])
-    .controller("first", function ($scope) {
-        $scope.name = "lol";
+    .controller("first", function ($scope,$http) {
+        var config = {
+                headers: {'Content-Type': 'application/json'}
+            };
+
+            $http.post('addCarts', $scope.cartsArray, config).then(function () {
+                $scope.cartOrder = JSON.parse(localStorage.getItem("carts"));
+            });
+
+
     });
 
 

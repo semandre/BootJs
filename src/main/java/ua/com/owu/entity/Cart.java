@@ -1,5 +1,6 @@
 package ua.com.owu.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Cart {
     private double price;
     private String sessionId;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
     private Customer customer;
 
@@ -59,4 +61,5 @@ public class Cart {
     public Customer getCustomer() {
         return customer;
     }
+
 }

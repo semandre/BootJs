@@ -10,7 +10,6 @@ $(document).ready(function () {
                     text: obj.name + " " + obj.price
                 });
 
-
                 let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
 
 
@@ -177,14 +176,10 @@ function getId(obj) {
             // localStorage.removeItem("carts");
             var storedNames = JSON.parse(localStorage.getItem("carts"));
             console.log(storedNames);
-
-
         },
         error: function () {
             console.log("errorAddCart");
-
         }
-
     });
 
 
