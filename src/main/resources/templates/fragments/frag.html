@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div id="pred">
+    <div id="preloader"></div>
+</div>
+
+<div th:fragment="style">
+    <link rel="stylesheet" th:href="@{/css/preloader.css}"/>
+</div>
+
+<div th:fragment="static">
+    <script th:src="@{/preloader.js}"/>
+</div>
+
+</body>
+</html>

@@ -35,6 +35,7 @@ public class AccountController {
         List<Cart> carts = customer.getCarts();
         for (Cart cart : carts) {
             cart.setCustomer(customer);
+
         }
 
         customerService.save(customer);
@@ -43,7 +44,6 @@ public class AccountController {
         System.out.println("----------");
         return customerService.findAll();
     }
-
 
     @PostMapping("/showCity")
     public List<City> showCity() {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -23,6 +23,10 @@
     </div>
  </div>
 
+
+<div th:include="/fragments/frag::#pred" ></div>
+<div th:include="/fragments/frag::style"/>
+<div th:include="/fragments/frag::static"/>
 
 <script src="/cartProduct.js"></script>
 </body>
