@@ -1,13 +1,11 @@
 package ua.com.owu.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.*;
-import sun.util.calendar.BaseCalendar;
+
 
 import javax.persistence.*;
-import java.util.Calendar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -36,6 +34,7 @@ public class Customer {
     private List<Cart> carts;
 
 
+
     public Customer(String firstName, String lastName, String phoneNumber, String address, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,6 +52,7 @@ public class Customer {
         this.orderDate = orderDate;
         this.carts = carts;
     }
+
 
 }
 

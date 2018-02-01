@@ -8,12 +8,12 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Setter
+@Getter
 @ToString(exclude = "customer")
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//    private Product product = new Product();
     private int quantity;
     private String name;
     private double price;
@@ -30,13 +30,13 @@ public class Cart {
         this.sessionId = sessionId;
     }
 
-    public Cart(int quantity, String name, double price, String sessionId, Customer customer) {
-        this.quantity = quantity;
-        this.name = name;
-        this.price = price;
-        this.sessionId = sessionId;
-        this.customer = customer;
-    }
+//    public Cart(int quantity, String name, double price, String sessionId, Customer customer) {
+//        this.quantity = quantity;
+//        this.name = name;
+//        this.price = price;
+//        this.sessionId = sessionId;
+//        this.customer = customer;
+//    }
 
     public String getName() {
         return name;
@@ -61,5 +61,6 @@ public class Cart {
     public Customer getCustomer() {
         return customer;
     }
+
 
 }
