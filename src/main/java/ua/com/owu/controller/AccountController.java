@@ -33,12 +33,11 @@ public class AccountController {
         City city = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
         List<Cart> carts = customer.getCarts();
-
+        List<Customer> customerList = customerService.findAll();
         for (Cart cart : carts) {
             cart.setCustomer(customer);
 //            cartService.save(cart);
         }
-        List<Customer> customerList = customerService.findAll();
         boolean b = true;
         for (Customer customerIt : customerList) {
             if (customer.getFirstName().equals(customerIt.getFirstName()) &&
@@ -47,9 +46,11 @@ public class AccountController {
                     customer.getPhoneNumber().equals(customerIt.getPhoneNumber())) {
                 b = false;
 
+
 //                customerService.update(customer.getAddress(), customer.getFirstName(), customer.getLastName(), customer.getEmail());
                 customerService.delete(customerIt.getId());
                 customerService.save(customer);
+
                 System.out.println(customerIt.getAddress());
             }
         }

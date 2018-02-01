@@ -34,6 +34,7 @@ public class Customer {
     private List<Cart> carts;
 
 
+
     public Customer(String firstName, String lastName, String phoneNumber, String address, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -52,12 +53,6 @@ public class Customer {
         this.carts = carts;
     }
 
-    public List<Cart> getCarts() {
-        return carts;
-    }
 
-    public void setCarts(List<Cart> carts) {
-        this.carts = carts;
-    }
 }
 
