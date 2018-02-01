@@ -33,33 +33,11 @@ public class AccountController {
         City city = cityService.findOne(customer.getCity().getCityName());
         customer.setCity(city);
         List<Cart> carts = customer.getCarts();
-        List<Customer> customerList = customerService.findAll();
         for (Cart cart : carts) {
             cart.setCustomer(customer);
-//            cartService.save(cart);
-        }
-        boolean b = true;
-        for (Customer customerIt : customerList) {
-            if (customer.getFirstName().equals(customerIt.getFirstName()) &&
-                    customer.getLastName().equals(customerIt.getLastName()) &&
-                    customer.getEmail().equals(customerIt.getEmail()) &&
-                    customer.getPhoneNumber().equals(customerIt.getPhoneNumber())) {
-                b = false;
-
-
-//                customerService.update(customer.getAddress(), customer.getFirstName(), customer.getLastName(), customer.getEmail());
-                customerService.delete(customerIt.getId());
-                customerService.save(customer);
-
-                System.out.println(customerIt.getAddress());
-            }
-        }
-        if (b) {
-
-            customerService.save(customer);
-
         }
 
+        customerService.save(customer);
         System.out.println("----------");
         System.out.println(customer.getCarts());
         System.out.println("----------");
