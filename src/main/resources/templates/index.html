@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" ng-app="modal"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
     <title>Title</title>
     <!--<link type="text/css" href="css/preloader.css" rel="stylesheet" />-->
+    <link type="text/css" href="css/modal.css" rel="stylesheet" />
 </head>
-<body>
+<body  ng-controller="modalcarts">
 
+<div ng-hide = "cartbox_show" id="modalCartBox">
+    <div id="modalCartBoxContent">
+        <div id="cartsProduct" ng-controller="carts">
+            <!--<button ng-click="buy()">buy</button>-->
+            <a href="account"><button ng-hide = "but_show">Купити</button></a>
+            <div ng-repeat="cart in cartsArray track by $index">
+                <p>{{cart.name}} {{cart.price}}</p>
+                <button ng-click="removeOne($index)">remove</button>
+                <button ng-click="increment($index)">+</button>
+                {{cart.quantity}}
+                <button ng-click="decrement($index)">-</button>
+            </div>
+        </div>
+        <button ng-click="close()">close</button>
+    </div>
+
+</div>
 
 <button id="SortByLowPrice">За зростанням ціни</button>
 <button id="SortByHighPrice">За зменшенням ціни</button>
 
 <input type="text" name="name" id="name"/>
 <button id="search">пошук</button>
-<a href="cartBox"><button>Корзина</button></a>
+<a><button ng-click="open()">Корзина</button></a>
 
 
 <div class="target"></div>
@@ -27,7 +46,7 @@
 
 
 <script src="/main.js"></script>
-<script src="/test.js"></script>
+<script src="/cartmodal.js"></script>
 <!--<script src="/preloader.js"></script>-->
 
 </body>
