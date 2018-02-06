@@ -8,17 +8,21 @@ angular.module("myApp", [])
     .controller("carts", function ($scope, $http) {
         $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
         $scope.but_show = false;
+
         if ($scope.cartsArray.length == 0) {
             $scope.but_show = true;
         }
 
+
         $scope.removeOne = function ($index) {
             console.log("delete" + $index);
             $scope.cartsArray.splice($index, 1);
+
             localStorage.setItem("carts", JSON.stringify($scope.cartsArray));
             if ($scope.cartsArray.length == 0) {
                 $scope.but_show = true;
             }
+
 
         };
         $scope.increment = function ($index) {
@@ -50,7 +54,8 @@ angular.module("myApp", [])
 
             console.log("buy log");
 
-        }
+        };
+
     });
 
 
