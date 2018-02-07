@@ -5,4 +5,6 @@ import ua.com.owu.entity.Product;
 
 public interface ProductDao extends JpaRepository<Product,Integer> {
 
+
+
 }
