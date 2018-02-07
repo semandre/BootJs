@@ -1,15 +1,14 @@
-angular.module("modal", [])
-    .controller('modalcarts', function($scope){
-        $scope.cartbox_show = true;
-        $scope.open = function () {
-            $scope.cartbox_show = false;
-            $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
-        };
-        $scope.close = function () {
+    angular.module("modal", [])
+        .controller('modalcarts', function ($scope) {
             $scope.cartbox_show = true;
-        };
-
-    })
+            $scope.open = function () {
+                $scope.cartbox_show = false;
+                $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
+            };
+            $scope.close = function () {
+                $scope.cartbox_show = true;
+            };
+        })
 
 
 
