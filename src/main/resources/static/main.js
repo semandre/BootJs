@@ -117,16 +117,24 @@ $('#search').click(function () {
 });
 
 
+
+
 var carts = [];
 carts = JSON.parse(localStorage.getItem("carts"));
 if (carts == null) {
     carts = [];
 }
 
+
+
+
+
 function getId(obj) {
+
+    carts = JSON.parse(localStorage.getItem("carts"));
     console.log(obj.id);
     var id = obj.id;
-
+    console.log("buy");
 
     $.ajax({
         url: 'addCart/' + obj.id + '',
@@ -176,6 +184,7 @@ function getId(obj) {
             // localStorage.removeItem("carts");
             var storedNames = JSON.parse(localStorage.getItem("carts"));
             console.log(storedNames);
+
         },
         error: function () {
             console.log("errorAddCart");
@@ -183,5 +192,5 @@ function getId(obj) {
     });
 
 
-}
+};
 
