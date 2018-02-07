@@ -144,38 +144,40 @@ function getId(obj) {
         success: function (data) {
             console.log(data);
             console.log(data.name);
+            var a = 0;
+            var checked = false;
 
             if (carts == null || carts.length == 0) {
                 carts.push(data);
-            }
-            var a = 0;
-            var checked = false;
-            for (let i in carts) {
-                a = a + 1;
-                if ((carts[i].name == data.name) && carts.length != 1) {
-                    carts[i].quantity = (carts[i].quantity + 1);
-                    console.log("1log");
+            }else {
 
-                } else {
-                    checked = true;
-                    for (let y in carts) {
-                        if (carts[y].name == data.name) {
-                            checked = false;
+                for (let i in carts) {
+                    a = a + 1;
+                    if ((carts[i].name == data.name)) {
+                        carts[i].quantity = (carts[i].quantity + 1);
+                        console.log("1log");
+
+                    } else {
+                        checked = true;
+                        for (let y in carts) {
+                            if (carts[y].name == data.name) {
+                                checked = false;
+                            }
+                        }
+                        if (a == carts.length) {
+                            if (checked) {
+                                carts.push(data);
+                                checked = false;
+                            }
                         }
                     }
                     if (a == carts.length) {
-                        if (checked) {
-                            carts.push(data);
-                            checked = false;
-                        }
+                        console.log("i==carts.length");
                     }
-                }
-                if (a == carts.length) {
-                    console.log("i==carts.length");
-                }
-                console.log(a);
-                console.log(carts.length);
+                    console.log(a);
+                    console.log(carts.length);
 
+                }
             }
 
 
