@@ -1,5 +1,5 @@
 angular.module("modal", [])
-    .controller('modalcarts', function($scope){
+    .controller('modalcarts', function($scope,$http){
         $scope.cartbox_show = true;
         $scope.showCategory = true;
         $scope.open = function () {
