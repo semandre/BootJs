@@ -11,6 +11,14 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 
 }
+.cart_item{
+
+    display: flex;
+    widht: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 #modalCartBoxContent {
     overflow: auto;
     background-color: #fefefe;
@@ -24,6 +32,7 @@
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
     display: flex;
+    flex-direction: row;
     flex-direction: column;
 }
 
@@ -71,7 +80,7 @@
 
 /*Let’s add some basic style to  product name and description.*/
 .description {
-    padding-top: 10px;
+    padding-top: 18px;
     margin-right: 60px;
     width: 115px;
 }
@@ -88,7 +97,7 @@
 }
 .description span:last-child {
     font-weight: 300;
-    margin-top: 8px;
+    margin-top: 20px;
     color: #86939E;
 }
 
