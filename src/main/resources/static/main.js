@@ -1,30 +1,47 @@
-$(document).ready(function () {
-
-    $.ajax({
-        url: "/showProduct",
-        type: "GET",
-        success: function (data) {
-            for (let obj of data) {
-                console.log(data);
-                let $p = $("<p/>", {
-                    text: obj.name + " " + obj.price
-                });
-
-                let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
-
-
-                $('.target').append($p).append($b);
-                $('.target p').addClass("span");
-                // $('#btn').html($b);
-            }
-        },
-        error: function () {
-            alert("errorSHOW");
-        }
-
-    });
-});
-
+// $(document).ready(function () {
+//
+//     $.ajax({
+//         url: "/showProduct",
+//         type: "GET",
+//         success: function (data) {
+//             for (let obj of data) {
+//                 console.log(data);
+//                 let $p = $("<p/>", {
+//                     text: obj.name + " " + obj.price
+//                 });
+//
+//                 let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
+//
+//
+//                 $('.target').append($p).append($b);
+//                 $('.target p').addClass("span");
+//                 // $('#btn').html($b);
+//             }
+//         },
+//         error: function () {
+//             alert("errorSHOW");
+//         }
+//
+//     });
+// });
+// $(document).ready(function () {
+//     $.ajax({
+//         url:"/allCategory",
+//         type:"GET",
+//         success:function (data) {
+//             console.log(data)
+//             for(let obj of data){
+//                 let $div =$("<button class='categorys' id='"+obj.id+"' onclick='categoryopen(this)'>"+obj.categoryname+"</button>")
+//                 $('.category').append($div);
+//             }
+//         },
+//         error:function () {
+//             console.log("error_CATEGORY_get");
+//         }
+//
+//
+//     })
+// });
 
 $('#SortByLowPrice ').click(function () {
     $('.target').empty();
@@ -196,3 +213,6 @@ function getId(obj) {
 
 };
 
+function categoryopen(obj) {
+
+}
