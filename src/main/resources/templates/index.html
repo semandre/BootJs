@@ -87,13 +87,32 @@
     </header>
 
     <main>
-        <button id="SortByLowPrice">За зростанням ціни</button>
-        <button id="SortByHighPrice">За зменшенням ціни</button>
+        <div>
+            <button id="SortByLowPrice">За зростанням ціни</button>
+            <button id="SortByHighPrice">За зменшенням ціни</button>
 
-        <input type="text" name="name" id="name"/>
-        <button id="search">пошук</button>
+            <input type="text" name="name" id="name"/>
+            <button id="search">пошук</button>
+        </div>
 
-        <div class="target"></div>
+        <!--<div class="target"></div>-->
+
+<div class="category">
+        <div class="categoryButtons">
+            <div class="categorys" ng-click="showCategoryButton()">Category</div>
+            <div  ng-hide="showCategory" ng-repeat="category in categoryArray track by $index">
+                <div class="categorys" ng-click="opencategory(category.id)">
+                    <span>{{category.categoryname}}  id: {{category.id}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="categoryBox" ng-hide="showCategory">
+            <div ng-repeat="categoryItem in categoryItemArray track by $index">
+                <span>Name:{{categoryItem.name}} price:{{categoryItem.price}} description:{{categoryItem.description}}</span>
+            </div>
+        </div>
+</div>
         <div id="btn"></div>
 
     </main>
@@ -118,6 +137,7 @@
 
 <script src="/main.js"></script>
 <script src="/cartmodal.js"></script>
+
 <!--<script src="/preloader.js"></script>-->
 
 </body>

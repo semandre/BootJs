@@ -1,10 +1,30 @@
 angular.module("modal", [])
-    .controller('modalcarts', function($scope){
+    .controller('modalcarts', function($scope,$http){
         $scope.cartbox_show = true;
+        $scope.showCategory = true;
         $scope.open = function () {
             $scope.cartbox_show = false;
             $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
+
         };
+        $http.get("/allCategory").then(function(response){
+            console.log("http");
+            console.log(response.data);
+            $scope.categoryArray = response.data;
+        });
+        $scope.opencategory = function (categoryId) {
+            console.log("open "+categoryId);
+            var requestUrl = '/findByCategory/' + categoryId + '';
+            $http.get(requestUrl).then(function (response) {
+                console.log(response.data);
+                $scope.categoryItemArray = response.data;
+            })
+        };
+        $scope.showCategoryButton = function () {
+            $scope.showCategory = !$scope.showCategory;
+        };
+
+
         $scope.close = function () {
             $scope.cartbox_show = true;
         };
@@ -43,6 +63,8 @@ angular.module("modal", [])
         }
 
     };
+
+
 
     });
 

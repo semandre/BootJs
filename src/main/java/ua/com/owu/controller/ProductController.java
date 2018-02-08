@@ -8,6 +8,7 @@ import ua.com.owu.entity.Product;
 import ua.com.owu.service.CategoryService;
 import ua.com.owu.service.ProductService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,9 +42,21 @@ public class ProductController {
         return productService.findAll();
     }
 
-    @PostMapping("/allCategory")
+    @GetMapping("/allCategory")
     public List<Category> allCategory() {
         return categoryService.findAll();
+    }
+    @GetMapping("/findByCategory/{id}")
+    public List<Product> allProductByCategory(@PathVariable int id){
+        List<Product> listProduct = new ArrayList<>();
+        List<Product> all = productService.findAll();
+
+        for(Product product:all){
+            if(id == product.getCategory().getId()){
+                listProduct.add(product);
+            }
+        }
+       return listProduct;
     }
     
     @GetMapping("/SortByAddingDate")
