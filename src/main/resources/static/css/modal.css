@@ -61,7 +61,7 @@
 .delete-btn {
     width: 18px;
     height: 17px;
-    background: url("/image/delete.ico") no-repeat center;
+    background: url("../image/delete.ico") no-repeat center;
 }
 
 
