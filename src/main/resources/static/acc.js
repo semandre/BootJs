@@ -41,6 +41,7 @@ $('#saveUser').click(function () {
         contentType: 'application/json',
         success: function (data) {
             console.log(data);
+            // document.getElementById('clear').reset();
             // for (let obj of data) {
             //     let $p = $("<p/>", {
             //         text: obj.id + " " + obj.firstName + " " + obj.lastName + " "

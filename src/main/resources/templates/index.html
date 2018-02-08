@@ -7,85 +7,19 @@
 
     <link rel="stylesheet" href="css/index.css"></link>
     <title>Title</title>
-    <!--<link type="text/css" href="css/preloader.css" rel="stylesheet" />-->
     <link type="text/css" href="css/modal.css" rel="stylesheet"/>
 </head>
 <body ng-controller="modalcarts">
 
-<div ng-hide="cartbox_show" id="modalCartBox">
-    <div id="modalCartBoxContent">
-        <!--<div id="cartsProduct" ng-controller="modalcarts">-->
-
-            <div class="title">
-                Shopping Bag
-            </div>
-            <button class="buy_btn" ng-click="close()">close</button>
-
-            <div class="item">
-
-                <div ng-repeat="cart in cartsArray track by $index">
-
-        <div class="cart_item">
-
-                    <!--<p>{{cart.name}} {{cart.price}}</p>-->
-                    <div class="buttons">
-                        <span class="delete-btn" ng-click="removeOne($index)"></span>
-                    </div>
-
-                    <!--<button ng-click="removeOne($index)">remove</button>-->
-
-                    <div class="description">
-                        <span>{{cart.name}}  Ціна: {{cart.price}}грн  </span>
-                    </div>
 
 
-                    <div class="quantity">
-                        <button class="plus-btn" type="button" name="button" ng-click="increment($index)">
-                            <img src="/image/plus.ico" alt=""/>
-                        </button>
-                        <input type="text" name="name" value="{{cart.quantity}}"/>
-                        <button class="minus-btn" type="button" name="button" ng-click="decrement($index)">
-                            <img src="/image/minus.ico" alt=""/>
-                        </button>
-                    </div>
-
-                </div>
-                </div>
-                <div class="total-price">{{cart.price}}</div>
-
-                <div class="buy_btn">
-                    <a href="account">
-                        <button ng-hide="but_show">Купити</button>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-
-    <!--</div>-->
-</div>
+<div th:include="/fragments/cart_frag::#header"></div>
+<div th:include="/fragments/cart_frag::cart_css"></div>
+<div th:include="/fragments/cart_frag::cart_js"></div>
 
 
 
 <div class="wraper">
-    <header>
-        <div>
-            <img src=""/>
-        </div>
-        <ul class="navbar">
-            <li><a href="">Львів</a></li>
-            <li><a href="">Ресторан</a></li>
-            <li><a href="">Контакти</a></li>
-        </ul>
-        <div class="cart" ng-click="open()">
-            <img src="image/cart.ico"/>
-        </div>
-
-        <h2 class="h_logo">RAMEN</h2>
-
-    </header>
-
     <main>
         <button id="SortByLowPrice">За зростанням ціни</button>
         <button id="SortByHighPrice">За зменшенням ціни</button>
@@ -95,20 +29,8 @@
 
         <div class="target"></div>
         <div id="btn"></div>
-
     </main>
-
-
-    <footer>
-
-
-    </footer>
-
 </div>
-
-
-
-
 
 
 <div th:include="/fragments/frag::#pred"></div>
