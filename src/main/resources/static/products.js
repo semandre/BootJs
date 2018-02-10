@@ -3,7 +3,7 @@ $(document).ready(function () {
     var out = '';
     $.ajax({
         url: '/allCategory',
-        type: 'POST',
+        type: 'GET',
         success: function (data) {
             for (var obj of data) {
                 out += '<option value="' + obj.categoryname + '">' + obj.categoryname + '</option>';

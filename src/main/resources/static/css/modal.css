@@ -21,7 +21,7 @@
 
 #modalCartBoxContent {
 
-    overflow: auto;
+    overflow: auto hidden;
     background-color: #fefefe;
     margin: auto auto; /* 15% from the top and centered */
     padding: 20px;
@@ -40,12 +40,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
 }
-.header::after {
-    margin-bottom:10px;
-    height:1px;
-    background-color: #ccc;
-    width: 100%;
-}
+
 .header__description{
     font-family: sans-serif;
     font-size: 2rem;

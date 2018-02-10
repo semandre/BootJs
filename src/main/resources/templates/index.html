@@ -8,45 +8,34 @@
     <link rel="stylesheet" href="css/index.css"></link>
     <title>Title</title>
     <link type="text/css" href="css/modal.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/menu.css"/>
+    <link rel="stylesheet" href="/css/prod_wrapper.css"/>
 </head>
 <body ng-controller="modalcarts">
-
 
 
 <div th:include="/fragments/cart_frag::#header"></div>
 <div th:include="/fragments/cart_frag::cart_css"></div>
 <div th:include="/fragments/cart_frag::cart_js"></div>
 
-
+<div th:include="/fragments/cart_frag::#menu_lists"></div>
+<div th:include="/fragments/cart_frag::menu.css"></div>
 
 <div class="wraper">
     <main>
-        <div>
-            <button id="SortByLowPrice">За зростанням ціни</button>
-            <button id="SortByHighPrice">За зменшенням ціни</button>
 
-            <input type="text" name="name" id="name"/>
-            <button id="search">пошук</button>
-        </div>
+
+        <!--<div>-->
+            <!--<button id="SortByLowPrice">За зростанням ціни</button>-->
+            <!--<button id="SortByHighPrice">За зменшенням ціни</button>-->
+
+            <!--<input type="text" name="name" id="name"/>-->
+            <!--<button id="search">пошук</button>-->
+        <!--</div>-->
 
         <!--<div class="target"></div>-->
-
-<div class="category">
-        <div class="categoryButtons">
-            <div class="categorys" ng-click="showCategoryButton()">Category</div>
-            <div  ng-hide="showCategory" ng-repeat="category in categoryArray track by $index">
-                <div class="categorys" ng-click="opencategory(category.id)">
-                    <span>{{category.categoryname}}  id: {{category.id}}</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="categoryBox" ng-hide="showCategory">
-            <div ng-repeat="categoryItem in categoryItemArray track by $index">
-                <span>Name:{{categoryItem.name}} price:{{categoryItem.price}} description:{{categoryItem.description}}</span>
-            </div>
-        </div>
-</div>
+        <!--<div th:include="/fragments/frag::#prod_wrap"></div>-->
+        <!--<div th:include="/fragments/frag::prod_css"></div>-->
         <div id="btn"></div>
     </main>
 </div>

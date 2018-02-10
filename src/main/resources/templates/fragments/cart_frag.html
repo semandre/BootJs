@@ -51,22 +51,77 @@
             <li><a href="">Ресторан</a></li>
             <li><a href="">Контакти</a></li>
         </ul>
-
-
         <h2 class="h_logo">RAMEN</h2>
-
     </header>
 
 </div>
 
 <div th:fragment="cart_css">
-    <link th:href="@{/css/modal.css}"/>
+    <link rel="stylesheet" th:href="@{/css/modal.css}"/>
 </div>
 
 <div th:fragment="cart_js">
     <script th:src="@{/cartmodal.js}"></script>
 </div>
 
+
+<div id="menu_lists">
+    <ul class="menu_list">
+        <div ng-repeat="category in categoryArray track by $index">
+            <div ng-click="opencategory(category.id)">
+                <li class="category_li">{{category.categoryname}}</li>
+            </div>
+        </div>
+
+
+        <div class="prod-wrapper">
+            <ul class="products clearfix">
+                <div ng-click="showCategory">
+                    <div ng-repeat="categoryItem in categoryItemArray track by $index">
+                        <li class="product-wrapper">
+                            <a href="" class="product">
+                                <div class="product-photo">
+                                    <img src="/image/1.jpg" alt=""/>
+                                </div>
+                                <div class="revie_wrap">
+                                    <div class="name-wrap">
+                                        <span class="name">{{categoryItem.name}}</span>
+                                    </div>
+
+                                    <p> {{categoryItem.description}}. </p>
+
+                                    <span class="price">Ціна: {{categoryItem.price}}</span>
+
+                                    <div class="product-buttons-wrap" ng-click="add_but(categoryItem.id)">
+                                        <button class="button">Купити</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+
+    </ul>
+
+</div>
+
+<div th:fragment="menu_css">
+    <link rel="stylesheet" th:href="@{/css/menu.css}"/>
+</div>
+
+
+<div class="prod_wrap">
+
+
+</div>
+
+
+<div th:fragment="prod_css">
+    <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
+</div>
 
 </body>
 </html>
