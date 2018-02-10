@@ -17,7 +17,8 @@ body{
 
 .h_logo{
     text-align: center;
-    margin-top: 20px;
+    margin-top: -40px;
+    margin-left: auto;
 }
 
 li{
@@ -45,6 +46,22 @@ li>a{
     line-height: 40px;
     float: left;
 }
+.navbar>select{
+    width: auto;
+    color: green;
+    line-height: 40px;
+    float: left;
+    outline: none;
+    border: transparent 1px solid ;
+    font-size: 14pt;
+    margin-top: 10px;
+    background: #04c852;
+    text-align: center;
+    text: red;
+    color: white;
+
+}
+
 
 
 
@@ -70,6 +87,7 @@ footer{
     background-repeat: no-repeat;
 
     outline: none;
+    cursor: pointer;
 
 }
 .wraper{

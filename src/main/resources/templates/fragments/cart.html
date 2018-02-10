@@ -1,68 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
     <title>Title</title>
 </head>
-<body>
+<body ng-app="modal">
 
-<div ng-hide="cartbox_show" id="modalCartBox">
-    <div id="modalCartBoxContent">
+<div id="cart">
 
-        <div class="wrap cf">
-            <h1 class="projTitle">Responsive Table<span>-Less</span> Shopping Cart</h1>
-            <div class="heading cf">
-                <h1>My Cart</h1>
-                <a href="#" class="continue">Continue Shopping</a>
+    <div ng-hide="cartbox_show" id="modalCartBox">
+        <div id="modalCartBoxContent">
+            <div class="header">
+                <p class="header__description"> My cart</p>
+                <button class="shopping" ng-click="close()">Continue Shopping</button>
             </div>
-            <div class="cart">
-                <!--    <ul class="tableHead">
-                      <li class="prodHeader">Product</li>
-                      <li>Quantity</li>
-                      <li>Total</li>
-                       <li>Remove</li>
-                    </ul>-->
-                <ul class="cartWrap">
-                    <div ng-repeat="cart in cartsArray track by $index">
+            <div class="shopping_list">
+                <div ng-repeat="cart in cartsArray track by $index">
+				<span class="item">
+					<img src="https://www.pestocafe.ua/storage/tb-products/2016/01/27/aea2991b1a4b6fc6b100d3bac4a8ab4e_1453893985.png"
+                         alt="title photo" class="item_img"/>
 
-                        <li class="items odd">
-
-                            <div class="infoWrap">
-                                <div class="cartSection">
-                                    <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt=""
-                                         class="itemImg"/>
-                                    <p class="itemNumber">#QUE-007544-002</p>
-                                    <h3>{{cart.name}}</h3>
-
-                                    <p><input type="text" class="qty" value = "{{cart.quantity}}"/> x ${{cart.price}}</p>
-
-                                    <p class="stockStatus"> In Stock</p>
-                                </div>
-
-
-                                <div class="prodTotal cartSection">
-                                    <p>$15.00</p>
-                                </div>
-                                <div class="cartSection removeWrap">
-                                    <a href="#" class="remove">x</a>
-                                </div>
-                            </div>
-                        </li>
+                    <aside class="item_name">{{cart.name}}</aside>
+                    <div>
+					<button class="item_count_less" ng-click="decrement($index)">-</button>
+                    <input type="number" class="item_count" ng-model = "cart.quantity"/>
+					<button class="item_count_more" ng-click="increment($index)">+</button>
                     </div>
+					<aside class="item_price">x {{cart.price}} UAH</aside>
+					<aside class="item_total">{{total_item($index)}} UAH</aside>
+					<button class="item_clear" ng-click="removeOne()">Clear</button>
 
-                    <!--<li class="items even">Item 2</li>-->
-                </ul>
-            </div>
-
-
-            <div class="subtotal cf">
-                <ul>
-                    <li class="totalRow final"><span class="label">Total</span><span class="value">{{total()}}</span></li>
-                    <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
-                </ul>
+				</span>
+                </div>
+                <br/>
+                <a href="account"><button class="butt_buy"  ng-hide = "but_show">Купити</button></a>
+                <span class="total_price">Загальна сума: {{total()}} UAH</span>
             </div>
         </div>
     </div>
+
+
 </div>
 
 </body>

@@ -47,22 +47,22 @@ angular.module("modal", [])
 
         };
 
-    // $scope.total_item = function ($index) {
-    //       $scope.sum = $scope.cartsArray[$index].price * $scope.cartsArray[$index].quantity;
-    //   return $scope.sum;
-    // };
-    //
-    // $scope.total = function () {
-    //     $scope.t_price = 0;
-    //     for (let i in $scope.cartsArray) {
-    //        $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
-    //        console.log($scope.t_price);
-    //        console.log($scope.cartsArray[i].quantity);
-    //        console.log($scope.cartsArray[i].price);
-    //
-    //     }
-    //     return $scope.t_price;
-    // }
+    $scope.total_item = function ($index) {
+          $scope.sum = $scope.cartsArray[$index].price * $scope.cartsArray[$index].quantity;
+      return $scope.sum;
+    };
+
+    $scope.total = function () {
+        $scope.t_price = 0;
+        for (let i in $scope.cartsArray) {
+           $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
+           console.log($scope.t_price);
+           console.log($scope.cartsArray[i].quantity);
+           console.log($scope.cartsArray[i].price);
+
+        }
+        return $scope.t_price;
+    }
 
 
 
@@ -94,8 +94,9 @@ angular.module("modal", [])
             var requestUrl = 'addCart/' + categoryId + '';
 
             $http.get(requestUrl).then(function (response) {
-                $scope.categoryItemArray = response.data;
-                console.log($scope.categoryItemArray);
+                console.log(response.data);
+                console.log(response.data.name);
+
                 $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
                 var a = 0;
@@ -103,25 +104,24 @@ angular.module("modal", [])
 
                 if ($scope.cartsArray== null || $scope.cartsArray.length == 0) {
                     $scope.cartsArray.push(response.data);
-                    // console.log("sas", response)
                 }else {
 
                     for (let i in $scope.cartsArray) {
                         a = a + 1;
-                        if (($scope.cartsArray[i].name == $scope.categoryItemArray.name)) {
+                        if (($scope.cartsArray[i].name == response.data.name)) {
                             $scope.cartsArray[i].quantity = ($scope.cartsArray[i].quantity + 1);
                             console.log("1log");
 
                         } else {
                             checked = true;
-                            for (let y in carts) {
-                                if ($scope.cartsArray[y].name == $scope.categoryItemArray.name) {
+                            for (let y in $scope.cartsArray) {
+                                if ($scope.cartsArray[y].name == response.data.name) {
                                     checked = false;
                                 }
                             }
                             if (a == $scope.cartsArray.length) {
                                 if (checked) {
-                                    $scope.cartsArray.push(categoryItemArray);
+                                    $scope.cartsArray.push(response.data);
                                     checked = false;
                                 }
                             }
