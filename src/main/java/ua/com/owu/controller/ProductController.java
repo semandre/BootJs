@@ -63,4 +63,10 @@ public class ProductController {
     public List<Product> SortByAddingDate() {
         return productService.sortByAddingDate();
     }
+
+    @GetMapping("/productInfo/{id}")
+    public Product productInfo(@PathVariable int id){
+      return productService.findById(id);
+    }
+
 }

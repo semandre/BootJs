@@ -43,7 +43,7 @@ public class AccountController {
         return customerService.findAll();
     }
 
-    @PostMapping("/showCity")
+    @GetMapping("/showCity")
     public List<City> showCity() {
         return cityService.findAll();
     }

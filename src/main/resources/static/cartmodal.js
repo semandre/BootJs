@@ -1,11 +1,23 @@
 angular.module("modal", [])
-    .controller('modalcarts', function($scope,$http){
+    .controller('modalcarts', function($scope,$http,$window,$location){
         $scope.cartbox_show = true;
         $scope.showCategory = true;
+
+        $http.get("/showCity").then(function (response) {
+           $scope.city = response.data
+            $scope.cityList = response.data[0].cityName;
+        });
+
+        $scope.changedSelect = function () {
+            console.log($scope.cityList);
+        }
+
         $scope.open = function () {
             $scope.cartbox_show = false;
             $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
-
+            if ($scope.cartsArray.length != 0) {
+                $scope.but_show = false;
+            }
         };
 
         $scope.close = function () {
@@ -56,9 +68,9 @@ angular.module("modal", [])
         $scope.t_price = 0;
         for (let i in $scope.cartsArray) {
            $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
-           console.log($scope.t_price);
-           console.log($scope.cartsArray[i].quantity);
-           console.log($scope.cartsArray[i].price);
+           // console.log($scope.t_price);
+           // console.log($scope.cartsArray[i].quantity);
+           // console.log($scope.cartsArray[i].price);
 
         }
         return $scope.t_price;
@@ -104,7 +116,7 @@ angular.module("modal", [])
                 var a = 0;
                 var checked = false;
 
-                if ($scope.cartsArray== null || response.data.length == 0) {
+                if ($scope.cartsArray== null || $scope.cartsArray.length == 0) {
                     $scope.cartsArray.push(response.data);
                 }else {
 
@@ -150,4 +162,16 @@ angular.module("modal", [])
         $scope.showCategoryButton = function () {
             $scope.showCategory = !$scope.showCategory;
         };
+
+        $scope.openInfo = function (categoryId) {
+            var requestUrl = 'productInfo/' + categoryId + '';
+            $http.get(requestUrl).then(function (response) {
+                // $scope.Product = response.data;
+                localStorage.setItem("productInfo", JSON.stringify(response.data));
+                console.log(response.data)
+                $window.location.href = "/productInfo";
+
+                // $window.location.href = "/productInfo/"+categoryId+"";
+            })
+        }
     });
