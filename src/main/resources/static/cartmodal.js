@@ -94,8 +94,6 @@ angular.module("modal", [])
             var requestUrl = 'addCart/' + categoryId + '';
 
             $http.get(requestUrl).then(function (response) {
-                console.log(response.data);
-                console.log(response.data.name);
 
                 $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
@@ -129,12 +127,8 @@ angular.module("modal", [])
                         if (a == $scope.cartsArray.length) {
                             console.log("i==carts.length");
                         }
-                        console.log(a);
-                        console.log($scope.cartsArray.length);
-
                     }
                 }
-                console.log($scope.cartsArray);
                 localStorage.setItem("carts", JSON.stringify($scope.cartsArray));
 
             });
