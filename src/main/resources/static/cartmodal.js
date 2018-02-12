@@ -94,34 +94,35 @@ angular.module("modal", [])
             var requestUrl = 'addCart/' + categoryId + '';
 
             $http.get(requestUrl).then(function (response) {
-                $scope.categoryItemArray = response.data;
-                console.log($scope.categoryItemArray);
+                // $scope.categoryItemArray = response.data;
+                console.log(response.data);
+                console.log(response.data.name);
                 $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
                 var a = 0;
                 var checked = false;
 
-                if ($scope.cartsArray== null || $scope.cartsArray.length == 0) {
+                if ($scope.cartsArray== null || response.data.length == 0) {
                     $scope.cartsArray.push(response.data);
                     // console.log("sas", response)
                 }else {
 
                     for (let i in $scope.cartsArray) {
                         a = a + 1;
-                        if (($scope.cartsArray[i].name == $scope.categoryItemArray.name)) {
+                        if (($scope.cartsArray[i].name == response.data.name)) {
                             $scope.cartsArray[i].quantity = ($scope.cartsArray[i].quantity + 1);
                             console.log("1log");
 
                         } else {
                             checked = true;
                             for (let y in carts) {
-                                if ($scope.cartsArray[y].name == $scope.categoryItemArray.name) {
+                                if ($scope.cartsArray[y].name == response.data.name) {
                                     checked = false;
                                 }
                             }
                             if (a == $scope.cartsArray.length) {
                                 if (checked) {
-                                    $scope.cartsArray.push(categoryItemArray);
+                                    $scope.cartsArray.push(response.data);
                                     checked = false;
                                 }
                             }
