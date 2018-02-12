@@ -8,37 +8,6 @@
 <body ng-app="modal">
 
 <div id="header">
-    <div ng-hide="cartbox_show" id="modalCartBox">
-        <div id="modalCartBoxContent">
-            <div class="header">
-                <p class="header__description"> My cart</p>
-                <button class="shopping" ng-click="close()">Continue Shopping</button>
-            </div>
-            <div class="shopping_list">
-                <div ng-repeat="cart in cartsArray track by $index">
-				<span class="item">
-					<img src="https://www.pestocafe.ua/storage/tb-products/2016/01/27/aea2991b1a4b6fc6b100d3bac4a8ab4e_1453893985.png"
-                         alt="title photo" class="item_img"/>
-
-                    <aside class="item_name">{{cart.name}}</aside>
-                    <div>
-					<button class="item_count_less" ng-click="decrement($index)">-</button>
-                    <input type="text" class="item_count" value="{{cart.quantity}}"/>
-					<button class="item_count_more" ng-click="increment($index)">+</button>
-                    </div>
-					<aside class="item_price">x {{cart.price}} UAH</aside>
-					<aside class="item_total">{{total_item($index)}} UAH</aside>
-					<button class="item_clear" ng-click="removeOne()">Clear</button>
-
-				</span>
-                </div>
-                <br/>
-                <span class="total_price">Загальна сума: {{total()}} UAH</span>
-            </div>
-        </div>
-    </div>
-
-
     <header>
         <div>
             <img src=""/>
@@ -47,9 +16,10 @@
             Cart
         </div>
         <ul class="navbar">
-            <li><a href="">Львів</a></li>
+            <select id="list"></select>
             <li><a href="">Ресторан</a></li>
             <li><a href="">Контакти</a></li>
+
         </ul>
         <h2 class="h_logo">RAMEN</h2>
     </header>
@@ -122,6 +92,8 @@
 <div th:fragment="prod_css">
     <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
 </div>
+
+
 
 </body>
 </html>

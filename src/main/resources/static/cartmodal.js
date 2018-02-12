@@ -47,22 +47,22 @@ angular.module("modal", [])
 
         };
 
-    // $scope.total_item = function ($index) {
-    //       $scope.sum = $scope.cartsArray[$index].price * $scope.cartsArray[$index].quantity;
-    //   return $scope.sum;
-    // };
-    //
-    // $scope.total = function () {
-    //     $scope.t_price = 0;
-    //     for (let i in $scope.cartsArray) {
-    //        $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
-    //        console.log($scope.t_price);
-    //        console.log($scope.cartsArray[i].quantity);
-    //        console.log($scope.cartsArray[i].price);
-    //
-    //     }
-    //     return $scope.t_price;
-    // }
+    $scope.total_item = function ($index) {
+          $scope.sum = $scope.cartsArray[$index].price * $scope.cartsArray[$index].quantity;
+      return $scope.sum;
+    };
+
+    $scope.total = function () {
+        $scope.t_price = 0;
+        for (let i in $scope.cartsArray) {
+           $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
+           console.log($scope.t_price);
+           console.log($scope.cartsArray[i].quantity);
+           console.log($scope.cartsArray[i].price);
+
+        }
+        return $scope.t_price;
+    }
 
 
 
@@ -94,9 +94,11 @@ angular.module("modal", [])
             var requestUrl = 'addCart/' + categoryId + '';
 
             $http.get(requestUrl).then(function (response) {
-                // $scope.categoryItemArray = response.data;
+
                 console.log(response.data);
                 console.log(response.data.name);
+
+
                 $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
                 var a = 0;
@@ -104,7 +106,6 @@ angular.module("modal", [])
 
                 if ($scope.cartsArray== null || response.data.length == 0) {
                     $scope.cartsArray.push(response.data);
-                    // console.log("sas", response)
                 }else {
 
                     for (let i in $scope.cartsArray) {
@@ -115,7 +116,9 @@ angular.module("modal", [])
 
                         } else {
                             checked = true;
-                            for (let y in carts) {
+
+                            for (let y in $scope.cartsArray) {
+
                                 if ($scope.cartsArray[y].name == response.data.name) {
                                     checked = false;
                                 }
