@@ -2,10 +2,22 @@ angular.module("modal", [])
     .controller('modalcarts', function($scope,$http){
         $scope.cartbox_show = true;
         $scope.showCategory = true;
+
+        $http.get("/showCity").then(function (response) {
+           $scope.city = response.data
+            $scope.cityList = response.data[0].cityName;
+        });
+
+        $scope.changedSelect = function () {
+            console.log($scope.cityList);
+        }
+
         $scope.open = function () {
             $scope.cartbox_show = false;
             $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
-
+            if ($scope.cartsArray.length != 0) {
+                $scope.but_show = false;
+            }
         };
 
         $scope.close = function () {
@@ -56,9 +68,9 @@ angular.module("modal", [])
         $scope.t_price = 0;
         for (let i in $scope.cartsArray) {
            $scope.t_price += $scope.cartsArray[i].quantity * $scope.cartsArray[i].price;
-           console.log($scope.t_price);
-           console.log($scope.cartsArray[i].quantity);
-           console.log($scope.cartsArray[i].price);
+           // console.log($scope.t_price);
+           // console.log($scope.cartsArray[i].quantity);
+           // console.log($scope.cartsArray[i].price);
 
         }
         return $scope.t_price;
@@ -94,6 +106,8 @@ angular.module("modal", [])
             var requestUrl = 'addCart/' + categoryId + '';
 
             $http.get(requestUrl).then(function (response) {
+                console.log(response.data);
+                console.log(response.data.name);
 
                 $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
 
@@ -127,8 +141,12 @@ angular.module("modal", [])
                         if (a == $scope.cartsArray.length) {
                             console.log("i==carts.length");
                         }
+                        console.log(a);
+                        console.log($scope.cartsArray.length);
+
                     }
                 }
+                console.log($scope.cartsArray);
                 localStorage.setItem("carts", JSON.stringify($scope.cartsArray));
 
             });
@@ -140,4 +158,16 @@ angular.module("modal", [])
         $scope.showCategoryButton = function () {
             $scope.showCategory = !$scope.showCategory;
         };
+
+        $scope.openInfo = function (categoryId) {
+            var requestUrl = 'productInfo/' + categoryId + '';
+            $http.get(requestUrl).then(function (response) {
+                // $scope.Product = response.data;
+                localStorage.setItem("productInfo", JSON.stringify(response.data));
+                console.log(response.data)
+                $window.location.href = "/productInfo";
+
+                // $window.location.href = "/productInfo/"+categoryId+"";
+            })
+        }
     });

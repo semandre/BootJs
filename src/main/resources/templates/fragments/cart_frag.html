@@ -16,7 +16,9 @@
             Cart
         </div>
         <ul class="navbar">
-            <select id="list"></select>
+            <select ng-model="cityList" ng-change="changedSelect()">
+                <option  ng-repeat="x in city" >{{x.cityName}}</option>
+            </select>
             <li><a href="">Ресторан</a></li>
             <li><a href="">Контакти</a></li>
 
@@ -48,10 +50,10 @@
             <ul class="products clearfix">
                 <div ng-click="showCategory">
                     <div ng-repeat="categoryItem in categoryItemArray track by $index">
-                        <li class="product-wrapper">
+                        <li class="product-wrapper" >
                             <a href="" class="product">
                                 <div class="product-photo">
-                                    <img src="/image/1.jpg" alt=""/>
+                                    <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
                                 </div>
                                 <div class="revie_wrap">
                                     <div class="name-wrap">

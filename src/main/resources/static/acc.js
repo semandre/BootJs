@@ -1,16 +1,16 @@
-$(document).ready(function () {
-    var out = '';
-    $.ajax({
-        url: '/showCity',
-        type: 'POST',
-        success: function (data) {
-            for (var obj of data) {
-                out += '<option value="' + obj.cityName + '">' + obj.cityName + '</option>';
-            }
-            $('#list').html(out);
-        }
-    });
-});
+// $(document).ready(function () {
+//     var out = '';
+//     $.ajax({
+//         url: '/showCity',
+//         type: 'POST',
+//         success: function (data) {
+//             for (var obj of data) {
+//                 out += '<option value="' + obj.cityName + '">' + obj.cityName + '</option>';
+//             }
+//             $('#list').html(out);
+//         }
+//     });
+// });
 
 $('#saveUser').click(function () {
     var firstName = $('#first').val();
