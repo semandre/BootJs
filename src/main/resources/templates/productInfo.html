@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="productInfo">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 </head>
-<body ng-controller="productInfoCTRL">
-    <div>
-    {{Product.name}}
+<body >
 
-    {{Product.id}}
-    </div>
 
-    <script src="/productInfo.js"></script>
+
+<span th:text="${product.name}"></span>
+<span th:text="${product.price}"></span>
+<span th:text="${product.description}"></span>
+
+<div th:include="/fragments/frag::#pred"></div>
+<div th:include="/fragments/frag::style"/>
+<div th:include="/fragments/frag::static"/>
 </body>
 </html>

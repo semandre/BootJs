@@ -10,6 +10,7 @@ import ua.com.owu.entity.Product;
 import ua.com.owu.service.CategoryService;
 import ua.com.owu.service.ProductService;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,11 +65,6 @@ public class ProductController {
     @GetMapping("/SortByAddingDate")
     public List<Product> SortByAddingDate() {
         return productService.sortByAddingDate();
-    }
-
-    @GetMapping("/productInfo/{id}")
-    public Product productInfo(@PathVariable int id){
-      return productService.findById(id);
     }
 
 }
