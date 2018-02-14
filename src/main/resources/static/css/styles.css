@@ -1,0 +1,374 @@
+.prod-block:hover{
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+
+}
+.order-block{
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+}
+
+
+.addToCartBtn{
+    width: 98px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 10px;
+    background-color: #FF7902;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    color: white;
+}
+.addToCartBtn:hover{
+    background-color: #FF7902;
+}
+.addToCartBtn:active{
+    outline:none;
+}
+.prod-img{
+    margin: 0 auto;
+    background-color: red;
+    min-height: 200px;
+    width: 150px;
+    /*margin: 0 20px;*/
+}
+.ff-tah{
+    font-family:Tahoma;
+}
+.price-theme{
+
+    color: #FF7902;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 7px 7px 5px;
+
+    /*margin-right: -1em;*/
+    white-space: nowrap;
+    border: 1px solid transparent;
+    margin-top: 20px;
+
+}
+.white{
+    background-color: white;
+}
+.fsz-n{
+    font-size: 10px;
+}
+.ml-30{
+    margin-left: 30px;
+}
+.mb-20{
+    margin-bottom: 20px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mt-57{
+    margin-top: 57px;
+}
+
+.mt-100{
+    margin-top: 100px;
+}
+.mt-87{
+margin-top: 87px;
+ }
+.mtr-10{
+    margin-top: -10px;
+}
+
+.mt-26{
+    margin-top: 26px;
+}
+
+.w-200{
+    width: 200px;
+}
+.h-200{
+    height: 200px;
+}
+.hg-100{
+    min-height: 100%;
+}
+.wd-100{
+    width: 100%;
+}
+.wd-60{
+    width: 60%;
+}
+.m-auto{
+    margin: 0 auto;
+}
+
+.pt-20{
+    padding-top: 20px ;
+}
+.vertical-padding-20{
+    padding: 20px 0;
+}
+
+.va-m{
+    vertical-align: middle;
+}
+.b-btm{
+    border-bottom: solid 2px grey;
+}
+
+.p-price{
+    padding: 7px 7px 5px;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #FF7902;
+}
+
+.hidden-table:hover {
+    background-color: white !important;
+}
+/*CART*/
+.cart{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #FF7902;
+    border: none;
+    z-index: 999;
+    text-align: center;
+    vertical-align:middle;
+    font-size: 25px;
+}
+.cart:hover{
+    -webkit-box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    -moz-box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    color: #000000;
+}
+.nameForm{
+    margin: 0 auto;
+
+}
+.inputForm{
+    width: 100%;
+    margin-top:10px;
+    border-radius: 8px;
+    border:2px solid #3F3F3F ;
+}
+.former{
+    border: 2px solid #EEEEEE;
+}
+.inputForm:focus{
+    background-color: #F8F8F8;
+    outline:none;
+}
+
+.quant{
+    font-size: 20px;
+    width: 32px;
+    border: none;
+    background-color: #FF7902;
+    color: white;
+}
+
+/*------------------------------------------*/
+.fa{
+    margin-top: 17px;
+}
+
+.logo{
+    color: #ACACAC;
+}
+.logo:hover{
+    color: #F15A23;
+}
+
+.links{
+    color: #ACACAC;
+}
+.links:hover{
+    color: #F15A23;
+}
+
+
+.category{
+
+    text-align: center;
+    font-size: 20px;
+}
+.sortHeader{
+    color: #ACAC89;
+    font-size: 37px;
+    text-align: left;
+}
+.head{
+    min-height: 400px;
+    margin-top: 30px;
+}
+
+.line{
+    color:#F15A23;
+    width: 30px;
+}
+
+/*ADMIN*/
+
+.buttonList{
+    list-style-type: none;
+    padding: 0px;
+}
+.buttonList>li{
+    width: 100%;
+    border-bottom: 1px solid grey;
+
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+
+}
+.buttonList>li:hover{
+    -webkit-box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    -moz-box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    box-shadow: inset 0px 0px 24px 2px rgba(0,0,0,0.22);
+    color: #000000;
+}
+.buttonList>li:active{
+    outline: none;
+
+}
+.adminHead{
+    text-align: center;
+    padding: 50px;
+    font-weight:bold;
+    border-bottom: solid 1px grey;
+}
+
+.non-used{
+    margin-top: 150px;
+    border-bottom: dashed 1px grey ;
+    font-size: 50px;
+    opacity: 0.4;
+}
+
+.adminsBtn{
+    width: 100%;
+    color: white;
+    padding: 10px 0;
+    background-color: #FF7902;
+    font-size: 14px;
+    border: none;
+}
+.adminsBtn:hover{
+    color: white;
+}
+
+.adminsBtn:focus{
+    outline:none;
+    background-color: #3F3F3F;
+}
+.addProdBtn{
+    width: 198px;
+    background-color: #FF7902;
+    font-size: 10px;
+    padding: 10px 0;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    color: white;
+}
+
+.inputSize{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #3F3F3F ;
+    font-size: 1.30769em;
+    width: 100%;
+    height: 2em;
+    text-indent: .5em;
+    outline: 0;
+    box-shadow: inset 2px 2px 0 1px #f2f2f3;
+    border-radius: 3px;
+}
+.spanSize{
+    font-size: 30px;
+    color: #544B4E;
+}
+.radioSize{
+    font-size: 15px;
+    color: #544B4E;
+}
+
+.textArea{
+    height: 90px;
+    text-indent: .5em;
+    outline: 0;
+    box-shadow: inset 2px 2px 0 1px #f2f2f3;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #3F3F3F ;
+    font-size: 1.30769em;
+    width: 100%;
+}
+
+input[type="file"]{
+    opacity:0;
+    filter:alpha(opacity:0);
+    cursor:pointer;
+    border:none;
+
+}
+
+/*SELECT*/
+.styled-select {
+
+    height: 42px;
+    overflow: hidden;
+    width: 100%;
+    outline: 0;
+    box-shadow: inset 2px 2px 0 1px #f2f2f3;
+    border-radius: 3px;
+    border: 1px solid #3F3F3F ;
+    /*background-color: #FF7902;*/
+}
+
+.styled-select select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 42px;
+    padding: 5px; /* If you add too much padding here, the options won't show in IE */
+    width: 100%;
+    font-size: 20px;
+
+}
+.styled-select option{
+    /*background-color: #FF7902;*/
+}
+
+/*.styled-select option:focus>option:checked{*/
+    /*background: #000 !important;*/
+/*}*/
+
+.semi-square {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/*-----------------MODAL-------------------*/
+.modal{
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+
+}
+.modal-content{
+    margin: 15% auto;
+    width: 80%;
+}
+.dBlock{
+    display: block;
+}
+.dNone{
+    display: none;
+}

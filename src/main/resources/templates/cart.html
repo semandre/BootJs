@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <title>cartBox</title>
+</head>
+
+<body>
+
+
+
+<div id="cartsProduct" ng-controller="carts">
+        <!--<button ng-click="buy()">buy</button>-->
+        <a href="account"><button ng-hide = "but_show">Купити</button></a>
+        <div ng-repeat="cart in cartsArray track by $index">
+            <p>{{cart.name}} {{cart.price}}</p>
+            <button ng-click="removeOne($index)">remove</button>
+            <button ng-click="increment($index)">+</button>
+            {{cart.quantity}}
+    <button ng-click="decrement($index)">-</button>
+    </div>
+ </div>
+
+
+<div th:include="/fragments/frag::#pred" ></div>
+<div th:include="/fragments/frag::style"/>
+<div th:include="/fragments/frag::static"/>
+
+<script src="/cartProduct.js"></script>
+</body>
+</html>
