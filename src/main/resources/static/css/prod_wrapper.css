@@ -1,0 +1,139 @@
+.product-wrapper {
+    display: block;
+    width: 100%;
+    float: left;
+    transition: width .2s;
+}
+
+@media only screen and (min-width: 450px) {
+    .product-wrapper {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .product-wrapper {
+        width: 33.333%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .product-wrapper {
+        width: 25%;
+    }
+}
+
+.product {
+    display: block;
+    border: 1px solid #b5e9a7;
+    border-radius: 3px;
+    position: relative;
+    background: #fff;
+    margin: 0 20px 20px 0;
+    text-decoration: none;
+    color: #474747;
+    z-index: 0;
+    height: 400px;
+    /*width: 300px;*/
+}
+
+.revie_wrap{
+    height: 200px;
+    width: 100%;
+}
+
+.prod-wrapper{
+
+    width: 70%;
+    height: auto;
+    margin-left: 180px;
+}
+
+.product-photo {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+}
+
+.product-photo img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 100%;
+
+    margin: auto;
+    transition: transform .4s ease-out;
+}
+
+.product:hover .product-photo img {
+    transform: scale(1.05);
+}
+
+.product-buttons-wrap {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+
+}
+
+
+.button {
+    width: 150px;
+    display: table;
+    margin: 0 auto;
+    height: 35px;
+    position: relative;
+    top: -1px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+    border: 1px solid #56bd4b;
+    border-radius: 3px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 16pt;
+    cursor: pointer;
+}
+
+
+
+.product p {
+    position: relative;
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.em;
+    height: 0.6em;
+    overflow: hidden;
+    padding: 10px;
+    font-size: 11pt;
+}
+
+.product p:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 4.2em;
+    height: 1.6em;
+    background: linear-gradient(to left top, #fff, rgba(255, 255, 255, 0));
+}
+
+.price{
+    margin-top: 30px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.name-wrap{
+    width: auto;
+    margin-top: 5px;
+}
+.name{
+    margin-left: 10px;
+    text-align: center;
+    font-size: 18pt;
+}
+
+

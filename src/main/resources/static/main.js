@@ -1,30 +1,47 @@
-$(document).ready(function () {
-
-    $.ajax({
-        url: "/showProduct",
-        type: "GET",
-        success: function (data) {
-            for (let obj of data) {
-                console.log(data);
-                let $p = $("<p/>", {
-                    text: obj.name + " " + obj.price
-                });
-
-                let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
-
-
-                $('.target').append($p).append($b);
-                $('.target p').addClass("span");
-                // $('#btn').html($b);
-            }
-        },
-        error: function () {
-            alert("errorSHOW");
-        }
-
-    });
-});
-
+// $(document).ready(function () {
+//
+//     $.ajax({
+//         url: "/showProduct",
+//         type: "GET",
+//         success: function (data) {
+//             for (let obj of data) {
+//                 console.log(data);
+//                 let $p = $("<p/>", {
+//                     text: obj.name + " " + obj.price
+//                 });
+//
+//                 let $b = ("<input type='button' onclick='getId(this)' value='buy' id='" + obj.id + " '>");
+//
+//
+//                 $('.target').append($p).append($b);
+//                 $('.target p').addClass("span");
+//                 // $('#btn').html($b);
+//             }
+//         },
+//         error: function () {
+//             alert("errorSHOW");
+//         }
+//
+//     });
+// });
+// $(document).ready(function () {
+//     $.ajax({
+//         url:"/allCategory",
+//         type:"GET",
+//         success:function (data) {
+//             console.log(data)
+//             for(let obj of data){
+//                 let $div =$("<button class='categorys' id='"+obj.id+"' onclick='categoryopen(this)'>"+obj.categoryname+"</button>")
+//                 $('.category').append($div);
+//             }
+//         },
+//         error:function () {
+//             console.log("error_CATEGORY_get");
+//         }
+//
+//
+//     })
+// });
 
 $('#SortByLowPrice ').click(function () {
     $('.target').empty();
@@ -115,73 +132,4 @@ $('#search').click(function () {
         }
     });
 });
-
-
-var carts = [];
-carts = JSON.parse(localStorage.getItem("carts"));
-if (carts == null) {
-    carts = [];
-}
-
-function getId(obj) {
-    console.log(obj.id);
-    var id = obj.id;
-
-
-    $.ajax({
-        url: 'addCart/' + obj.id + '',
-        type: 'GET',
-        data: JSON.stringify(id),
-        contentType: 'application/json',
-        success: function (data) {
-            console.log(data);
-            console.log(data.name);
-
-            if (carts == null || carts.length == 0) {
-                carts.push(data);
-            }
-            var a = 0;
-            var checked = false;
-            for (let i in carts) {
-                a = a + 1;
-                if ((carts[i].name == data.name) && carts.length != 1) {
-                    carts[i].quantity = (carts[i].quantity + 1);
-                    console.log("1log");
-
-                } else {
-                    checked = true;
-                    for (let y in carts) {
-                        if (carts[y].name == data.name) {
-                            checked = false;
-                        }
-                    }
-                    if (a == carts.length) {
-                        if (checked) {
-                            carts.push(data);
-                            checked = false;
-                        }
-                    }
-                }
-                if (a == carts.length) {
-                    console.log("i==carts.length");
-                }
-                console.log(a);
-                console.log(carts.length);
-
-            }
-
-
-            console.log(carts);
-            localStorage.setItem("carts", JSON.stringify(carts));
-            // localStorage.removeItem("carts");
-            var storedNames = JSON.parse(localStorage.getItem("carts"));
-            console.log(storedNames);
-        },
-        error: function () {
-            console.log("errorAddCart");
-        }
-    });
-
-
-}
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+    <title>Title</title>
+</head>
+<body ng-app="modal">
+
+<div id="header">
+    <header>
+        <div>
+            <img src=""/>
+        </div>
+        <div class="shopping-cart" ng-click="open()">
+            Cart
+        </div>
+        <ul class="navbar">
+            <select ng-model="cityList" ng-change="changedSelect()">
+                <option  ng-repeat="x in city" >{{x.cityName}}</option>
+            </select>
+            <li><a href="">Ресторан</a></li>
+            <li><a href="">Контакти</a></li>
+
+        </ul>
+        <h2 class="h_logo">RAMEN</h2>
+    </header>
+
+</div>
+
+<div th:fragment="cart_css">
+    <link rel="stylesheet" th:href="@{/css/modal.css}"/>
+</div>
+
+<div th:fragment="cart_js">
+    <script th:src="@{/cartmodal.js}"></script>
+</div>
+
+
+<div id="menu_lists">
+    <ul class="menu_list">
+        <div ng-repeat="category in categoryArray track by $index">
+            <div ng-click="opencategory(category.id)">
+                <li class="category_li">{{category.categoryname}}</li>
+            </div>
+        </div>
+
+
+        <div class="prod-wrapper">
+            <ul class="products clearfix">
+                <div ng-click="showCategory">
+                    <div ng-repeat="categoryItem in categoryItemArray track by $index">
+                        <li class="product-wrapper" >
+                            <a href="" class="product">
+                                <div class="product-photo">
+                                    <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
+                                </div>
+                                <div class="revie_wrap">
+                                    <div class="name-wrap">
+                                        <span class="name">{{categoryItem.name}}</span>
+                                    </div>
+
+                                    <p> {{categoryItem.description}}. </p>
+
+                                    <span class="price">Ціна: {{categoryItem.price}}</span>
+
+                                    <div class="product-buttons-wrap" >
+                                        <button class="button" ng-click="add_but(categoryItem.id)">Купити</button>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </ul>
+        </div>
+
+
+    </ul>
+
+</div>
+
+<div th:fragment="menu_css">
+    <link rel="stylesheet" th:href="@{/css/menu.css}"/>
+</div>
+
+
+<div class="prod_wrap">
+
+
+</div>
+
+
+<div th:fragment="prod_css">
+    <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
+</div>
+
+
+
+</body>
+</html>

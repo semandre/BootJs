@@ -10,25 +10,28 @@
 
 
 <div id="inputsCustomer">
-    <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
-    <p id="first_name"></p>
-    <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
-    <p id="last_name"></p>
-    <input type="text" name="phoneNumber" placeholder="phone number" id="phone"  onkeyup="phonecheck()"/>
-    <p id="phone_number"></p>
-    <input type="text" name="address" placeholder="address" id="address"/>
-    <p id="address_"></p>
-    <input type="email" name="email" placeholder="email" id="email"  onkeyup="checkEmail()"/>
-    <p id="email_"></p>
-    <select id="list"></select>
+    <form id="clear">
+        <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
+        <p id="first_name"></p>
+        <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
+        <p id="last_name"></p>
+        <input type="text" name="phoneNumber" placeholder="phone number" id="phone" onkeyup="phonecheck()"/>
+        <p id="phone_number"></p>
+        <input type="text" name="address" placeholder="address" id="address"/>
+        <p id="address_"></p>
+        <input type="email" name="email" placeholder="email" id="email" onkeyup="checkEmail()"/>
+        <p id="email_"></p>
 
-<button  id="saveUser">Надіслати</button>
+        <!--<select id="list"></select>-->
+
+        <button id="saveUser" >Надіслати</button>
+    </form>
 </div>
 
 <div class="targetcus"></div>
 
 
-<div th:include="/fragments/frag::#pred" ></div>
+<div th:include="/fragments/frag::#pred"></div>
 <div th:include="/fragments/frag::style"/>
 <div th:include="/fragments/frag::static"/>
 

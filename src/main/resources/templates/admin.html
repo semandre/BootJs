@@ -1,59 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="mainView">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
-
-    <title>Ramen</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom fonts for this template -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
-    <!-- Custom styles for this template -->
-    <link href="/css/new-age.css" rel="stylesheet"/>
-    <link href="/css/styles.css" rel="stylesheet"/>
-    <link href="/css/slider.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/dropdown.css"/>
-    <link rel="stylesheet" href="/css/viewProduct.css"/>
-
-
-    <script src="/static/vendor/angular/angular.js"></script>
-    <script src="/static/js/modernizr.custom.js"></script>
+    <meta charset="UTF-8"/>
+    <title>admin</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+<body>
 
+<br/>
 
+<input type="text" name="pName" placeholder="name" id="name"/>
+<input type="text" name="count" placeholder="count" id="count"/>
+<input type="text" name="description" placeholder="descr" id="descr"/>
+<input type="text" name="price" placeholder="price" id="price"/>
+<!--<input type="text" name="category" placerholder="category" id="category"/>-->
+<select id="list"></select>
+<button id="saveBtn">save</button>
 
-<body >
-
-
-<nav class="navbar navbar-expand-lg  fixed-top container" id="mainNav">
-    <div class="container">
-        <a class=" js-scroll-trigger logo" href="#"><img src="/img/alco.png" height="70px" width="130px" alt="AlcoShop"/></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger links" href="#">Галерея</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link js-scroll-trigger links" href="#">Контакти</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<button id="SortByAddingDate">SortByAddingDate</button>
 
 <div class="white container hg-100 wd-100 mt-87">
     <div class="container">
@@ -73,8 +37,8 @@
             <div class="col-md-10 text-center mt-20" >
                 <div ng-show="currentView=='none'">
                     <span class="non-used">Виберіть дію з пункту меню</span>
-                    
-                   
+
+
                 </div>
                 <ng-include src="'/pages/editPage.jsp'" ng-show="currentView=='edit'"></ng-include>
                 <ng-include src="'/pages/allProducts.html'" ng-show="currentView=='products'"></ng-include>
@@ -100,6 +64,10 @@
     </div>
 </div>
 
+
+<div th:include="/fragments/frag::#pred" ></div>
+<div th:include="/fragments/frag::style"/>
+<div th:include="/fragments/frag::static"/>
 
 
 
@@ -150,54 +118,7 @@
 <script src="/main.js"></script>
 <script src="/test.js"></script>
 <script src="/products.js"></script>
-<script>
-    $('#cityNameBtn').click(function () {
 
-        console.log('hello');
-        let cityName=$('#cityName').val();
-        let city={
-            cityName
-        };
-        $.ajax({
-            url:'/find',
-            method:'POST',
-            data: JSON.stringify(city),
-            contentType:"application/json; charset=utf-8",
-            success:function (data) {
-                console.log(data);
-            },
-            error:function () {
-                console.log('error');
-            }
 
-        });
-
-    });
-</script>
-<script>
-    $( function() {
-        /*
-        - how to call the plugin:
-        $( selector ).cbpFWSlider( [options] );
-        - options:
-        {
-            // default transition speed (ms)
-            speed : 500,
-            // default transition easing
-            easing : 'ease'
-        }
-        - destroy:
-        $( selector ).cbpFWSlider( 'destroy' );
-        */
-
-        $( '#cbp-fwslider' ).cbpFWSlider();
-
-    } );
-</script>
 </body>
-
 </html>
-
-
-
-
