@@ -6,7 +6,8 @@ angular.module("myApp", [])
 
 angular.module("myApp", [])
     .controller("carts", function ($scope, $http) {
-        $scope.cartsArray = JSON.parse(localStorage.getItem("carts"));
+
+        $scope.cartsArray = JSON.parse(localStorage.getItem("carts")) || [];
         $scope.but_show = false;
 
         if ($scope.cartsArray.length == 0) {
