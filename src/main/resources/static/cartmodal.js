@@ -87,8 +87,8 @@ angular.module("modal", [])
             console.log("open " + categoryId);
             var requestUrl = '/findByCategory/' + categoryId + '';
             $http.get(requestUrl).then(function (response) {
-                console.log(response.data);
                 $scope.categoryItemArray = response.data;
+                console.log($scope.categoryItemArray);
             })
         };
 
@@ -156,6 +156,13 @@ angular.module("modal", [])
         $scope.showCategoryButton = function () {
             $scope.showCategory = !$scope.showCategory;
         };
+
+        $scope.ascending=function () {
+            $scope.sortByPrice=false;
+        }
+        $scope.descending=function () {
+            $scope.sortByPrice=true;
+        }
 
 
     });

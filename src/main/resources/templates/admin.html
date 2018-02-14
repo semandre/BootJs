@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="mainView">
 <head>
     <meta charset="UTF-8"/>
     <title>admin</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Custom styles for this template -->
+    <link href="/css/new-age.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <!--<link href="/css/slider.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" href="/css/dropdown.css"/>
+    <link rel="stylesheet" href="/css/viewProduct.css"/>
+
+
+    <script src="/vendor/angular/angular.js"></script>
+    <script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
 
 <br/>
 
-<input type="text" name="pName" placeholder="name" id="name"/>
-<input type="text" name="count" placeholder="count" id="count"/>
-<input type="text" name="description" placeholder="descr" id="descr"/>
-<input type="text" name="price" placeholder="price" id="price"/>
-<!--<input type="text" name="category" placerholder="category" id="category"/>-->
-<select id="list"></select>
-<button id="saveBtn">save</button>
 
-<button id="SortByAddingDate">SortByAddingDate</button>
 
 <div class="white container hg-100 wd-100 mt-87">
     <div class="container">
@@ -37,13 +48,21 @@
             <div class="col-md-10 text-center mt-20" >
                 <div ng-show="currentView=='none'">
                     <span class="non-used">Виберіть дію з пункту меню</span>
+                    <input type="text" name="pName" placeholder="name" id="name"/>
+                    <input type="text" name="count" placeholder="count" id="count"/>
+                    <input type="text" name="description" placeholder="descr" id="descr"/>
+                    <input type="text" name="price" placeholder="price" id="price"/>
+                    <!--<input type="text" name="category" placerholder="category" id="category"/>-->
+                    <select id="list"></select>
+                    <button id="saveBtn">save</button>
 
+                    <button id="SortByAddingDate">SortByAddingDate</button>
 
                 </div>
-                <ng-include src="'/pages/editPage.jsp'" ng-show="currentView=='edit'"></ng-include>
-                <ng-include src="'/pages/allProducts.html'" ng-show="currentView=='products'"></ng-include>
-                <ng-include src="'/pages/addProduct.jsp'" ng-show="currentView=='add'"></ng-include>
-                <ng-include src="'/pages/showOrders.jsp'" ng-show="currentView=='orders'"></ng-include>
+                <!--<ng-include src="'/pages/editPage.jsp'" ng-show="currentView=='edit'"></ng-include>-->
+                <!--<ng-include src="'/allProducts.html'" ng-show="currentView=='products'"></ng-include>-->
+                <ng-include src="'/templates/addProduct.html'" ng-show="currentView=='add'"></ng-include>
+                <!--<ng-include src="'/pages/showOrders.jsp'" ng-show="currentView=='orders'"></ng-include>-->
 
             </div>
         </div>
@@ -116,7 +135,7 @@
 <script src="/js/adminAjax.js"></script>
 <script src="/js/mainView.js"></script>
 <script src="/main.js"></script>
-<script src="/test.js"></script>
+<!--<script src="/test.js"></script>-->
 <script src="/products.js"></script>
 
 

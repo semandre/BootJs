@@ -7,93 +7,112 @@
 </head>
 <body ng-app="modal">
 
-<div id="header">
-    <header>
-        <div>
-            <img src=""/>
-        </div>
-        <div class="shopping-cart" ng-click="open()">
-            Cart
-        </div>
-        <ul class="navbar">
-            <select ng-model="cityList" ng-change="changedSelect()">
-                <option  ng-repeat="x in city" >{{x.cityName}}</option>
-            </select>
-            <li><a href="">Ресторан</a></li>
-            <li><a href="">Контакти</a></li>
+    <div id="header">
 
-        </ul>
-        <h2 class="h_logo">RAMEN</h2>
-    </header>
+            <header>
+                <!--<div>-->
+                    <!--<img src=""/>-->
+                <!--</div>-->
+                <div class="inner-left pt-30 mt_15">
+                    <span class="w-15 text-center inline-block mb_6"><select ng-model="cityList" ng-change="changedSelect()">
+                        <option  ng-repeat="x in city" >{{x.cityName}}</option>
+                    </select></span>
+                    <span class="w-15 text-center inline-block"><a class="" href="">Ресторан</a></span>
+                    <span class="w-15 text-center inline-block"><a href="">Контакти</a></span>
 
-</div>
+                </div>
+                <div class="inner-left text-center mt_15">
+                    <a href="#"><img src="/img/logo.png" alt="logo" width="200px" height="75px"/></a>
 
-<div th:fragment="cart_css">
-    <link rel="stylesheet" th:href="@{/css/modal.css}"/>
-</div>
-
-<div th:fragment="cart_js">
-    <script th:src="@{/cartmodal.js}"></script>
-</div>
-
-
-<div id="menu_lists">
-    <ul class="menu_list">
-        <div ng-repeat="category in categoryArray track by $index">
-            <div ng-click="opencategory(category.id)">
-                <li class="category_li">{{category.categoryname}}</li>
-            </div>
-        </div>
-
-
-        <div class="prod-wrapper">
-            <ul class="products clearfix">
-                <div ng-click="showCategory">
-                    <div ng-repeat="categoryItem in categoryItemArray track by $index">
-                        <li class="product-wrapper" >
-                            <a href="" class="product">
-                                <div class="product-photo">
-                                    <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
-                                </div>
-                                <div class="revie_wrap">
-                                    <div class="name-wrap">
-                                        <span class="name">{{categoryItem.name}}</span>
-                                    </div>
-
-                                    <p> {{categoryItem.description}}. </p>
-
-                                    <span class="price">Ціна: {{categoryItem.price}}</span>
-
-                                    <div class="product-buttons-wrap" >
-                                        <button class="button" ng-click="add_but(categoryItem.id)">Купити</button>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                </div>
+                <div class="inner-left text-right mt_15">
+                    <div class=" shopping-cart" ng-click="open()">
+                        Cart
                     </div>
                 </div>
-            </ul>
-        </div>
+            </header>
 
 
-    </ul>
 
-</div>
+    </div>
 
-<div th:fragment="menu_css">
-    <link rel="stylesheet" th:href="@{/css/menu.css}"/>
-</div>
+    <div th:fragment="cart_css">
+        <link rel="stylesheet" th:href="@{/css/modal.css}"/>
+    </div>
 
-
-<div class="prod_wrap">
-
-
-</div>
+    <div th:fragment="cart_js">
+        <script th:src="@{/cartmodal.js}"></script>
+    </div>
 
 
-<div th:fragment="prod_css">
-    <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
-</div>
+   <div class="container">
+       <div id="menu_lists">
+
+
+                   <div class="row">
+                       <div class="col-sm-2">
+                           <div ng-repeat="category in categoryArray track by $index">
+                               <div ng-click="opencategory(category.id)">
+                                   <li class="category_li">{{category.categoryname}}</li>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-sm-10 mt-20">
+
+                           <div class="products clearfix">
+                               <div ng-click="showCategory">
+                                   <div class="row">
+                                       <div ng-repeat="categoryItem in categoryItemArray |filter:{name:test} | orderBy:'price':sortByPrice" class="col-sm-2 mb-20">
+                                           <div class="product">
+
+                                               <div class="product-photo">
+                                                   <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
+                                               </div>
+                                               <div class="revie_wrap">
+                                                   <div class="name-wrap">
+                                                       <h2 class="name">{{categoryItem.name}}</h2>
+                                                   </div>
+
+                                                   <p> {{categoryItem.description}}. </p>
+
+                                                   <span class="price">Ціна: {{categoryItem.price}}</span>
+
+                                                   <button class="button mt-20" ng-click="add_but(categoryItem.id)">Купити</button>
+
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                               </div>
+                           </div>
+
+                           <div>
+                               <button id="SortByLowPrice" ng-click="ascending()">За зростанням ціни</button>
+                               <button id="SortByHighPrice " ng-click="descending()">За зменшенням ціни</button>
+
+                               <input type="text"  ng-model="test"/>
+                               <button id="search">пошук</button>
+                           </div>
+                       </div>
+                   </div>
+
+
+
+       </div>
+   </div>
+
+    <div th:fragment="menu_css">
+        <link rel="stylesheet" th:href="@{/css/menu.css}"/>
+    </div>
+
+
+
+
+    <div th:fragment="prod_css">
+        <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
+    </div>
+
 
 
 

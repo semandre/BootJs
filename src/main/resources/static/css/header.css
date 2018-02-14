@@ -29,7 +29,7 @@ body{
     animation-name: jump;
     animation-duration: .8s;
     animation-iteration-count: 1;
-    
+
 }
 @keyframes  jump{
     0%{
@@ -76,24 +76,24 @@ body{
 
 
 
-/*MEDIA*/
+/*!*MEDIA*!*/
 
-@media only screen and (max-width : 767px) {
+/*@media only screen and (max-width : 767px) {*/
 
-    .wd-150{
-        width: 120px;
-    }
-    .hg-150{
-        height: 120px;
-    }
-}
+    /*.wd-150{*/
+        /*width: 120px;*/
+    /*}*/
+    /*.hg-150{*/
+        /*height: 120px;*/
+    /*}*/
+/*}*/
 
-@media only screen and (max-width : 576px) {
+/*@media only screen and (max-width : 576px) {*/
 
-    .wd-150{
-        width: 75px;
-    }
-    .hg-150{
-        height: 75px;
-    }
-}
+    /*.wd-150{*/
+        /*width: 75px;*/
+    /*}*/
+    /*.hg-150{*/
+        /*height: 75px;*/
+    /*}*/
+/*}*/
