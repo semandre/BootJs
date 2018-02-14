@@ -126,6 +126,7 @@ $('#search').click(function () {
                 });
                 $('.target').append($p);
             }
+            console/log(data);
 
         }, error: function () {
             alert("find error");
