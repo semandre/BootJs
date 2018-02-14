@@ -1,16 +1,16 @@
 angular.module("modal", [])
-    .controller('modalcarts', function($scope,$http){
+    .controller('modalcarts', function($scope,$http, $window){
         $scope.cartbox_show = true;
         $scope.showCategory = true;
 
         $http.get("/showCity").then(function (response) {
-           $scope.city = response.data
+           $scope.city = response.data;
             $scope.cityList = response.data[0].cityName;
         });
 
         $scope.changedSelect = function () {
             console.log($scope.cityList);
-        }
+        };
 
         $scope.open = function () {
             $scope.cartbox_show = false;
@@ -159,15 +159,6 @@ angular.module("modal", [])
             $scope.showCategory = !$scope.showCategory;
         };
 
-        $scope.openInfo = function (categoryId) {
-            var requestUrl = 'productInfo/' + categoryId + '';
-            $http.get(requestUrl).then(function (response) {
-                // $scope.Product = response.data;
-                localStorage.setItem("productInfo", JSON.stringify(response.data));
-                console.log(response.data)
-                $window.location.href = "/productInfo";
 
-                // $window.location.href = "/productInfo/"+categoryId+"";
-            })
-        }
+
     });

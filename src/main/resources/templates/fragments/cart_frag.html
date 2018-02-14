@@ -51,7 +51,7 @@
                 <div ng-click="showCategory">
                     <div ng-repeat="categoryItem in categoryItemArray track by $index">
                         <li class="product-wrapper" >
-                            <a href="" class="product">
+                            <a href="/productInfo/{{categoryItem.id}}" class="product">
                                 <div class="product-photo">
                                     <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
                                 </div>
