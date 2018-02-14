@@ -11,7 +11,6 @@ import ua.com.owu.service.ProductService;
 
 import javax.servlet.http.HttpSession;
 
-
 @Controller
 public class MainController {
 
@@ -40,5 +39,4 @@ public class MainController {
         model.addAttribute("product",productService.findById(id));
         return "productInfo";
     }
-
 }
