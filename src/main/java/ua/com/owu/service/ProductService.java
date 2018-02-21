@@ -22,4 +22,6 @@ public interface ProductService {
     List<Product> findAllWithCategory();
 
     List<Product> findByName(String name);
+
+    void deleteById(int id);
 }

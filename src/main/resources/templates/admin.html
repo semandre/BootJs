@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="adminpage" >
 <head>
     <meta charset="UTF-8"/>
     <title>admin</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 </head>
-<body>
+<body ng-controller="adminpagectrl">
+
+<button ng-click="products()">shaw all products</button>
+<button ng-click="customers()">show all customers</button>
+<button>change</button>
+
+<div ng-switch="selected">
+    <div ng-switch-when="allproducts">allproducts
+        <div ng-repeat="product in productItem track by $index">
+            <div>{{product.name}} {{product.price}} <button ng-click="deleteProduct(product.id)">delete</button></div>
+
+        </div>
+        <div ng-hide="formhide">
+            <input type="text" name="pName" placeholder="name" ng-model="pname" ng-change="pNameChange(pname)"/>
+            <input type="text" name="count" placeholder="count" ng-model="count" ng-change="countChange(count)"/>
+            <input type="text" name="description" placeholder="descr" ng-model="descr" ng-change="descrChange(descr)"/>
+            <input type="text" name="price" placeholder="price" ng-model="price" ng-change="priceChange(price)"/>
+            <select ng-model="list" ng-change="changedCategory()">
+                <option  ng-repeat="x in category">{{x.categoryname}}</option>
+            </select>
+            <button ng-click="save()">save</button>
+            <button ng-click="cancel()">cancel</button>
+        </div>
+        <button ng-click="addnew()" ng-hide="addnewBtn">add new product</button>
+    </div>
+    <div ng-switch-when="allcustomer">allcustomer</div>
+    <div ng-switch-default="">ng-switch-default</div>
+</div>
 
 <br/>
 
-<input type="text" name="pName" placeholder="name" id="name"/>
-<input type="text" name="count" placeholder="count" id="count"/>
-<input type="text" name="description" placeholder="descr" id="descr"/>
-<input type="text" name="price" placeholder="price" id="price"/>
-<!--<input type="text" name="category" placerholder="category" id="category"/>-->
-<select id="list"></select>
-<button id="saveBtn">save</button>
+
 
 <button id="SortByAddingDate">SortByAddingDate</button>
 
 <div id="listprod"></div>
 
 
+
+
 <div th:include="/fragments/frag::#pred"></div>
 <div th:include="/fragments/frag::style"/>
 <div th:include="/fragments/frag::static"/>
 
-<script src="/main.js"></script>
-<script src="/test.js"></script>
+<!--<script src="/main.js"></script>-->
+<script src="/admin.js"></script>
 <script src="/products.js"></script>
 
 

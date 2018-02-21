@@ -53,6 +53,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public void deleteById(int id) {
+        productDao.delete(id);
+    }
+
+    @Override
     public Product findById(int id) {
         return productDao.findOne(id);
     }

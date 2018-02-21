@@ -42,6 +42,10 @@ public class ProductController {
         productService.save(product);
         return productService.findAll();
     }
+    @PostMapping("/deleteProduct")
+    public void deleteProduct(@RequestBody int id){
+        productService.deleteById(id);
+    }
 
     @GetMapping("/allCategory")
     public List<Category> allCategory() {
