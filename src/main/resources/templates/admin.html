@@ -8,6 +8,8 @@
 </head>
 <body ng-controller="adminpagectrl">
 
+
+
 <button ng-click="products()">shaw all products</button>
 <button ng-click="customers()">show all customers</button>
 <button>change</button>
@@ -23,7 +25,7 @@
             <input type="text" name="count" placeholder="count" ng-model="count" ng-change="countChange(count)"/>
             <input type="text" name="description" placeholder="descr" ng-model="descr" ng-change="descrChange(descr)"/>
             <input type="text" name="price" placeholder="price" ng-model="price" ng-change="priceChange(price)"/>
-            <select ng-model="list" ng-change="changedCategory()">
+            <select ng-model="list" ng-change="changedCategory(list)">
                 <option  ng-repeat="x in category">{{x.categoryname}}</option>
             </select>
             <button ng-click="save()">save</button>
@@ -34,7 +36,7 @@
     <div ng-switch-when="allcustomer">allcustomer</div>
     <div ng-switch-default="">ng-switch-default</div>
 </div>
-
+<a href="/logout"><button>exit</button></a>
 <br/>
 
 

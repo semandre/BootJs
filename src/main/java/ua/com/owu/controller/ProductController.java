@@ -23,12 +23,8 @@ public class ProductController {
 
     @GetMapping("/show")
     public List<Product> index() {
-
         List<Product> all = productService.findAll();
-        System.out.println("--------------");
-        System.out.println(all);
-        System.out.println("--------------");
-        return all;
+       return all;
     }
 
 
@@ -36,7 +32,10 @@ public class ProductController {
     public List<Product> save(@RequestBody Product product) {
         Date date = new Date();
         product.setAddingdate(date);
-        categoryService.findOne(product.getCategory().getCategoryname());
+        System.out.println("------------------------");
+        System.out.println(product.getCategory().getCategoryname());
+        System.out.println(product.getCategory().getId());
+        System.out.println("------------------------");
         Category category = categoryService.findOne(product.getCategory().getCategoryname());
         product.setCategory(category);
         productService.save(product);

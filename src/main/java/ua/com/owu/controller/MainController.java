@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import ua.com.owu.entity.Product;
 import ua.com.owu.service.ProductService;
 
@@ -39,4 +40,9 @@ public class MainController {
         model.addAttribute("product",productService.findById(id));
         return "productInfo";
     }
+
+    @GetMapping("/login")
+    public String login(){return "/login";}
+    @GetMapping("/errorlogin")
+    public String errorlogin(){return "/errorlogin";}
 }

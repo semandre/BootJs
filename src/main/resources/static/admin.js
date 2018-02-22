@@ -82,8 +82,10 @@ angular.module("adminpage", [])
             $scope.formhide = true;
             $scope.addnewBtn = false
         };
-        $scope.changedCategory = function () {
+        $scope.changedCategory = function (val) {
+            $scope.list = val;
             console.log($scope.list);
+
         };
         $scope.products = function () {
             $scope.selected = "allproducts";
