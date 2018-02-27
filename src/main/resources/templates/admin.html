@@ -1,58 +1,164 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" ng-app="adminpage" >
 <head>
-    <meta charset="UTF-8"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,  initial-scale = 1.0"/>
     <title>admin</title>
+
+    <link rel="stylesheet"  href="/css/admin.css"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|PT+Sans+Caption:400,700" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css"/>
+
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/paper/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 </head>
 <body ng-controller="adminpagectrl">
 
 
-
-<button ng-click="products()">shaw all products</button>
-<button ng-click="customers()">show all customers</button>
-<button>change</button>
-
-<div ng-switch="selected">
-    <div ng-switch-when="allproducts">allproducts
-        <div ng-repeat="product in productItem track by $index">
-            <div>{{product.name}} {{product.price}} <button ng-click="deleteProduct(product.id)">delete</button></div>
+<nav class="navbar navbar-inverse" style="padding: 0px; border-radius: 0px;z-index: 1;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Ramen</a>
 
         </div>
-        <div ng-hide="formhide">
-            <input type="text" name="pName" placeholder="name" ng-model="pname" ng-change="pNameChange(pname)"/>
-            <input type="text" name="count" placeholder="count" ng-model="count" ng-change="countChange(count)"/>
-            <input type="text" name="description" placeholder="descr" ng-model="descr" ng-change="descrChange(descr)"/>
-            <input type="text" name="price" placeholder="price" ng-model="price" ng-change="priceChange(price)"/>
-            <select ng-model="list" ng-change="changedCategory(list)">
-                <option  ng-repeat="x in category">{{x.categoryname}}</option>
-            </select>
-            <button ng-click="save()">save</button>
-            <button ng-click="cancel()">cancel</button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-shopping-bag"></i> Магазин</a></li>
+                <li><a href="/logout"><i class="fa fa-sign-out"></i> Вихід</a></li>
+            </ul>
         </div>
-        <button ng-click="addnew()" ng-hide="addnewBtn">add new product</button>
     </div>
-    <div ng-switch-when="allcustomer">allcustomer</div>
-    <div ng-switch-default="">ng-switch-default</div>
+</nav>
+
+
+<div class="container-fluid" style="padding: 0px; ">
+    <div class="row">
+        <div class="col-sm-3" style="padding: 0px; border-radius: 0px; " >
+            <div class="sidebar-nav">
+                <div class="navbar navbar-default" role="navigation" style="margin-top: -22px;">
+                    <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                        <div id="sweeties1" class="menu1">
+                            <span class="title1">Каталог</span>
+                            <ul class="navigation_menu1">
+                                <li class = "select_category">Категорії</li>
+                                <li class = "select_category">Товари</li>
+                                <li class = "select_category">Відгуки</li>
+                                <li class = "select_category">Клієнти</li>
+                            </ul>
+
+                        </div>
+
+                        <div id="sweeties2" class="menu2">
+                            <span class="title2">Доповнення</span>
+                            <ul class="navigation_menu2">
+                                <li class = "select_category">Аккаунт</li>
+                                <li class = "select_category">Банер</li>
+                                <li class = "select_category">Хіт продаж</li>
+                                <li class = "select_category">Рекомендації</li>
+                                <li class = "select_category">Категорії</li>
+                            </ul>
+                        </div>
+
+
+                        <div id="sweeties3" class="menu3">
+                            <span class="title3">Замовлення</span>
+                        </div>
+
+
+                        <div id="sweeties4" class="menu4">
+                            <span class="title4">Звіти</span>
+                            <ul class="navigation_menu4">
+                                <li class = "select_category">Тиждневий звіт</li>
+                                <li class = "select_category">Місячний звіт</li>
+                                <li class = "select_category">Річний звіт</li>
+                            </ul>
+                        </div>
+
+                        <div  class="menu5">
+                            <span class="title5">Допомога</span>
+                        </div>
+
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <button ng-click="products()">shaw all products</button>
+            <button ng-click="customers()">show all customers</button>
+            <button>change</button>
+
+            <div ng-switch="selected">
+                <div ng-switch-when="allproducts">allproducts
+                    <div ng-repeat="product in productItem track by $index">
+                        <div>{{product.name}} {{product.price}} <button ng-click="deleteProduct(product.id)">delete</button></div>
+
+                    </div>
+                    <div ng-hide="formhide">
+                        <input type="text" name="pName" placeholder="name" ng-model="pname" ng-change="pNameChange(pname)"/>
+                        <input type="text" name="count" placeholder="count" ng-model="count" ng-change="countChange(count)"/>
+                        <input type="text" name="description" placeholder="descr" ng-model="descr" ng-change="descrChange(descr)"/>
+                        <input type="text" name="price" placeholder="price" ng-model="price" ng-change="priceChange(price)"/>
+                        <select ng-model="list" ng-change="changedCategory(list)">
+                            <option  ng-repeat="x in category">{{x.categoryname}}</option>
+                        </select>
+                        <button ng-click="save()">save</button>
+                        <button ng-click="cancel()">cancel</button>
+                    </div>
+                    <button ng-click="addnew()" ng-hide="addnewBtn">add new product</button>
+                </div>
+                <div ng-switch-when="allcustomer">allcustomer</div>
+                <div ng-switch-default="">ng-switch-default</div>
+            </div>
+            <br/>
+
+
+
+            <button id="SortByAddingDate">SortByAddingDate</button>
+
+            <div id="listprod"></div>
+        </div>
+    </div>
 </div>
-<a href="/logout"><button>exit</button></a>
-<br/>
+
+<main class="main">
+
+
+</main>
+
+<script src="static.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="docs.js"></script>
+<script src="https://buttons.github.io/buttons.js"></script>
 
 
 
-<button id="SortByAddingDate">SortByAddingDate</button>
-
-<div id="listprod"></div>
 
 
 
 
-<div th:include="/fragments/frag::#pred"></div>
-<div th:include="/fragments/frag::style"/>
-<div th:include="/fragments/frag::static"/>
+<!--<div th:include="/fragments/frag::#pred"></div>-->
+<!--<div th:include="/fragments/frag::style"/>-->
+<!--<div th:include="/fragments/frag::static"/>-->
 
 <!--<script src="/main.js"></script>-->
+<script src="/admin_menu.js"></script>
 <script src="/admin.js"></script>
 <script src="/products.js"></script>
 

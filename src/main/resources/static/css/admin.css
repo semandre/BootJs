@@ -1,0 +1,208 @@
+header{
+	width: 100%;
+	height: 70px;
+	background-color: black;
+}
+
+.nav_button{
+	height: 70px;
+	padding: 0px;
+	margin-left: auto;
+}
+
+
+.exit, .to_shop{
+	height: 70px;
+	width: 35%;
+	padding: 0px;
+	background-color: black;
+	display: inline-block;
+	float: right;
+	color: white;
+	border: none;
+	
+}
+
+.exit:hover, .to_shop:hover{
+	background-color: #a75515;
+	border: none;
+}
+
+.header_title:after{
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    background-image: url(http://x-lines.ru/letters/i/cyrillicgothic/1682/ffffff/46/0/kjos43mq.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-top: 8px;
+    margin-left: 20px;
+}
+
+.navbar {
+	padding: 0px;
+}
+
+.menu__list{
+	height: 600px;
+	padding: 0px;
+	width: 100px;
+	background-color: black;
+}
+
+
+.menu1 .navigation_menu1 {
+  margin: 0;
+  list-style: none;
+  display: none;
+  color: white;
+margin-left: -40px;
+}
+
+.menu1 .title1::after {
+    margin-left: 10px;
+  content: '▶ ';
+    
+  font-size: 80%;
+  color: white;
+    
+}
+
+.menu1.open1 .title1::after {
+  content: '▼ ';
+     margin-left: 10px;
+    color: white;
+    
+}
+
+.menu1.open1 .navigation_menu1 {
+  display: block;
+}
+
+
+
+
+.menu2 .navigation_menu2 {
+  margin: 0;
+  list-style: none;
+  display: none;
+  margin-left: -40px;
+ 
+}
+
+.menu2 .title2::after {
+  content: '▶ ';
+  font-size: 80%;
+     margin-left: 10px;
+  color: white;
+}
+
+.menu2.open2 .title2::after {
+    content: '▼ ';
+     margin-left: 10px;
+}
+
+.menu2.open2 .navigation_menu2 {
+  display: block;
+}
+
+
+
+
+.menu4 .navigation_menu4 {
+  margin: 0;
+  list-style: none;
+  display: none;
+  color: white;
+margin-left: -40px;
+}
+
+.menu4 .title4::after {
+    margin-left: 10px;
+  content: '▶ ';
+    
+  font-size: 80%;
+  color: white;
+    
+}
+
+.menu4.open4 .title4::after {
+  content: '▼ ';
+     margin-left: 10px;
+    color: white;
+    margin-top: 10px;
+    
+}
+
+.menu4.open4 .navigation_menu4 {
+  display: block;
+}
+
+.select_category{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #404040;
+    color: white;
+    padding-left: 50px;
+}
+
+.select_category:active{
+    border-color: #000000;
+    
+}
+
+.select_category:hover{
+ background-color:#a75515;
+}
+
+.navigation_menu1{
+ /*widows: 100%;*/
+   
+}
+
+.title1, .title2, .title3, .title4,.title5{
+    color: white;
+    position: relative;
+    padding-left: 50px;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    background-color: #222222;
+}
+
+
+.title1:hover,.title3:hover,.title4:hover,.title5:hover, .title6:hover,.title2:hover{
+    padding: 10px 0;
+    background-color: #2e5624;
+    padding-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.navbar, .navbar-default{
+	box-shadow:none;
+	padding: 0px;
+}
