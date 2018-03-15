@@ -2,14 +2,25 @@
 <html lang="en" ng-app="modal" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,  initial-scale = 1.0"/>
+    <title>Ramen</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
 
     <link rel="stylesheet" href="css/index.css"></link>
     <title>Title</title>
-    <link type="text/css" href="css/modal.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="/css/menu.css"/>
+    <link type="text/css" href="/css/modal.css" rel="stylesheet"/>
     <link rel="stylesheet" href="/css/prod_wrapper.css"/>
+
+    <!--	<link rel="stylesheet"  href="bootstrap.css">-->
+    <link rel="stylesheet"  href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet"  href="/css/index.css"/>
+    <link rel="stylesheet"  href="/css/product_wrapper.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|PT+Sans+Caption:400,700" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
+
 </head>
 <body ng-controller="modalcarts">
 
@@ -19,28 +30,13 @@
 <div th:include="/fragments/cart_frag::cart_css"></div>
 <div th:include="/fragments/cart_frag::cart_js"></div>
 
-<div th:include="/fragments/cart_frag::#menu_lists"></div>
-<div th:include="/fragments/cart_frag::menu.css"></div>
 
-<div class="wraper">
-    <main>
-
-
-        <!--<div>-->
-            <!--<button id="SortByLowPrice">За зростанням ціни</button>-->
-            <!--<button id="SortByHighPrice">За зменшенням ціни</button>-->
-
-            <!--<input type="text" name="name" id="name"/>-->
-            <!--<button id="search">пошук</button>-->
-        <!--</div>-->
-
-        <!--<div class="target"></div>-->
-        <!--<div th:include="/fragments/frag::#prod_wrap"></div>-->
-        <!--<div th:include="/fragments/frag::prod_css"></div>-->
-        <!--<div id="btn"></div>-->
+    <main class="main">
+        <div th:include="/fragments/cart_frag::#prod_wrap"></div>
+        <div th:include="/fragments/cart_frag::prod_wrap.css"></div>
     </main>
-</div>
 
+<div th:include="/fragments/cart_frag::#footer"></div>
 
 <div th:include="/fragments/frag::#pred"></div>
 <div th:include="/fragments/frag::style"/>

@@ -8,22 +8,41 @@
 <body ng-app="modal">
 
 <div id="header">
-    <header>
-        <div>
-            <img src=""/>
-        </div>
-        <div class="shopping-cart" ng-click="open()">
-            Cart
-        </div>
-        <ul class="navbar">
-            <select ng-model="cityList" ng-change="changedSelect()">
-                <option  ng-repeat="x in city" >{{x.cityName}}</option>
-            </select>
-            <li><a href="">Ресторан</a></li>
-            <li><a href="">Контакти</a></li>
 
-        </ul>
-        <h2 class="h_logo">RAMEN</h2>
+
+    <header >
+        <div class="container-fluid ">
+            <div class="row">
+                <div class="col-lg-5 col-xs-11 col-xs-pull-12 navigation ">
+
+                    <select class="navigation__city " ng-model="cityList" ng-change="changedSelect()">
+                        <option ng-repeat="x in city">{{x.cityName}}</option>
+                    </select>
+
+                    <span class="navigation__restaurant">Ресторани</span>
+                    <span class="navigation__contact">Контакти</span>
+                </div>
+
+                <div class="col-lg-2 col-xs-12 col-xs-push-11  ml-auto mr-auto  title ">
+                    <a href="#" class="navigation__title  "></a>
+                </div>
+
+                <div class="col-lg-5 ml-auto cart">
+                    <img src="../image/cart_icon.png" class="navigation__cart" ng-click="open()"/>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 menu">
+                    <ul class="menu__list " >
+                        <li class="menu__list_active" ng-click="opencategory(category.id)" ng-repeat="category in categoryArray track by $index">{{category.categoryname}}
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
     </header>
 
 </div>
@@ -37,64 +56,94 @@
 </div>
 
 
-<div id="menu_lists">
-    <ul class="menu_list">
-        <div ng-repeat="category in categoryArray track by $index">
-            <div ng-click="opencategory(category.id)">
-                <li class="category_li">{{category.categoryname}}</li>
+<div id="prod_wrap">
+
+
+    <div class="container-fluid" ng-click="showCategory">
+        <div class="row ">
+            <div class="col-lg-3 ml-auto  search">
+                <input type="text" class="search__prod"/>
+            </div>
+            <div class="col-lg-1.5  mr-auto sort">
+                <select class="sort__wrap">
+                    <option class="sort_prod">По зростанню</option>
+                    <option>По спаданню</option>
+                    <option>По даті</option>
+                </select>
             </div>
         </div>
+        <div class="row wrapper "  >
 
-
-        <div class="prod-wrapper">
-            <ul class="products clearfix">
-                <div ng-click="showCategory">
-                    <div ng-repeat="categoryItem in categoryItemArray track by $index">
-                        <li class="product-wrapper" >
-                            <a href="/productInfo/{{categoryItem.id}}" class="product">
-                                <div class="product-photo">
-                                    <img src="/image/1.jpg" alt="" ng-click="openInfo(categoryItem.id)"/>
-                                </div>
-                                <div class="revie_wrap">
-                                    <div class="name-wrap">
-                                        <span class="name">{{categoryItem.name}}</span>
-                                    </div>
-
-                                    <p> {{categoryItem.description}}. </p>
-
-                                    <span class="price">Ціна: {{categoryItem.price}}</span>
-
-                                    <div class="product-buttons-wrap" >
-                                        <button class="button" ng-click="add_but(categoryItem.id)">Купити</button>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                    </div>
+            <div ng-repeat="categoryItem in categoryItemArray track by $index" class=" col-md-3   wrapper__prod" ng-click="showCategory">
+                <!--/productInfo/{{categoryItem.id}}-->
+                <img src="../image/drink.jpg" class="wrapper__prod__img" ng-click="openInfo(categoryItem.id)"/>
+                <span class="wrapper__prod__name">{{categoryItem.name}}</span>
+                <div class="wrapper_prod_desc">
+                    {{categoryItem.description}}
                 </div>
-            </ul>
+                <span class="wrapper__prod__price">{{categoryItem.price}}грн</span>
+
+                <button class="wrapper__prod__but" ng-click="add_but(categoryItem.id)">В корзину</button>
+            </div>
+
         </div>
-
-
-    </ul>
-
+    </div>
 </div>
 
-<div th:fragment="menu_css">
+<div th:fragment="prod_wrap_css">
     <link rel="stylesheet" th:href="@{/css/menu.css}"/>
 </div>
 
 
-<div class="prod_wrap">
+<div id="footer">
+    <footer class="footer navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 footer__title">
+                    <a href="#" class="footer__title__logo"></a>
+                    <span class="footer__title_copy">
+                    <i class="fa fa-copyright"></i>
+                    2017-2018 RAMEN
+                </span>
+                    <span class="footer__title__desc">Всі права захищені</span>
 
+                </div>
 
+                <div class="col-lg-4 footer__contact">
+                    <span class="footer__contact__developers">Розробники:</span>
+                    <span class="footer__contact__name">Андрій Павлів: 0967767845</span>
+                    <span class="footer__contact__name1">Ростислав Вішко: 0967766543</span>
+                </div>
+                <div class="col-lg-3 footer__social ml-auto ">
+                    <ul class="icons d-flex">
+                        <li class="icons__item">
+                            <a href="#">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="icons__item">
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+
+                        <li class="icons__item">
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
 </div>
-
 
 <div th:fragment="prod_css">
     <link rel="stylesheet" th:href="@{/css/prod_wrapper.css}"/>
 </div>
-
 
 
 </body>

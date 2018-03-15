@@ -1,108 +1,208 @@
-
-* {
-    margin:0;
-}
-header{
-    height:100px;
-    width: 100%;
-    background-color: #04c852;
-
+html {
+    position: relative;
+    min-height: 100%;
 }
 
 body{
-
-    height: 100%;
-    min-width:900px;
+    font-family: 'PT Sans' sans-serif;
+    color: white;
+    background-image:  url(/image/dark_wood.png);
+    background-repeat: repeat-y repeat-x;
+    width:100%;
+    padding: 0px;
 }
 
-.h_logo{
-    text-align: center;
-    margin-top: -40px;
-    margin-left: auto;
+header{
+    background-color: black;
+    z-index: 90;
 }
 
-li{
+.navigation{
+    padding: 20px 10px;
+
+
+}
+
+.title{
+    background-color: transparent;
+    padding-bottom: 60px;
+}
+
+.cart{
+    padding-bottom: 60px;
+
+}
+
+.menu{
+
+}
+
+
+.navigation__city{
+    font-size: 16px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.select_city:after{
+    content: '';
+    border: none;
+    border-bottom: none;
+}
+
+.select_city:hover{
+    border-bottom: none;
+    background:#51AE3A;
+
+}
+
+
+.navigation__restaurant{
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+.navigation__contact{
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+.menu__list{
     list-style-type: none;
-}
-
-li>a{
-    display: block;
-    color: white;
+    margin-left: -50px;
+    margin-bottom: 0px;
     text-align: center;
-    font-family: cursive;
-    font-size: 20px;
-    text-decoration: none;
 }
 
-.navbar{
-    width: 1000px;
-    height: 80px;
-
-}
-
-.navbar>li{
-    width: 100px;
-    color: white;
-    line-height: 40px;
-    float: left;
-}
-.navbar>select{
-    width: auto;
-    color: green;
-    line-height: 40px;
-    float: left;
-    outline: none;
-    border: transparent 1px solid ;
-    font-size: 14pt;
-    margin-top: 10px;
-    background: #04c852;
-    text-align: center;
-    text: red;
-    color: white;
+.menu__list_active{
+    display: inline;
+    padding: 0 10px;
+    background-color: black;
+    cursor: pointer;
+    margin-left: 5px;
 
 }
 
+.menu__list_active:hover{
+    box-shadow: 0px 0px 5px 3px rgba(145,132,133,0.75);
+    background-color: #6f4e0c;
+    display: inline;
 
+
+}
+
+.navigation__title{
+    content: '';
+    position: absolute;
+    width: 153px;
+    height: 60px;
+    background-image: url(http://x-lines.ru/letters/i/cyrillicgothic/1682/ffffff/46/0/kjos43mq.png);
+    background-repeat: no-repeat;
+    background-position: center;
+
+
+}
+
+.navigation__cart{
+    width: 32px;
+    height: 32px;
+    margin-left: auto;
+    margin-top: 14px;
+    position: absolute;
+    right: 22px;
+    cursor: pointer;
+}
 
 
 
 footer{
-    height: 80px;
-    background: #f7f7f7;
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    background-color: #06c123;
-
-
-}
-.shopping-cart{
-    float: right;
-    margin-right: 20px;
-    width: 50px;
-    height: 50px;
-    color: transparent;
-    background-image: url("../image/shopping-cart.svg");
-    background-size: contain ;
-    background-repeat: no-repeat;
-
-    outline: none;
-    cursor: pointer;
-
-}
-.wraper{
+    padding-top: 20px;
+    background-color: #000;
+    margin-top: 30px;
+    height: auto;
     height: 100%;
 }
 
-/*main{*/
-    /*padding-bottom: 100px;*/
-/*}*/
+.footer__title{
+    position: relative;
+    height: 50px;
+}
 
-html {
+.icon__facebook{
+    background: f09a;
+}
 
-    position:relative;
-    min-height:100%;
+
+.icons{
+
+    display: inline-block;
+    position: relative;
+    list-style-type: none;
+    justify-content: center;
+
+
+}
+.icons__item a{
+    color: white;
+    font-size: 36px;
+    text-decoration: none;
+    margin-right: 40px;
 
 }
 
 
+.footer__contact{
+    margin-top: 10px;
+    height: auto;
+}
+
+.footer__social{
+    display: inline-block;
+    height: auto;
+}
+
+.footer__title{
+    height: 150px;
+}
+
+.footer__contact__developers{
+    display: inline;
+}
+.footer__contact__name{
+
+    display: inline-block;
+}
+.footer__contact__name1{
+    margin-left: 95px;
+    display: inline-block;
+}
+
+.footer__title__logo{
+    content: '';
+    position: absolute;
+    width: 153px;
+    height: 60px;
+    background-image: url(http://x-lines.ru/letters/i/cyrillicgothic/1682/ffffff/46/0/kjos43mq.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 25px;
+}
+
+.footer__title__desc{
+    position: relative;
+    bottom: 0px;
+    top: 70px;
+    margin-left: 25px;
+    display: block;
+}
+
+.footer__title_copy{
+    display: block;
+    position: relative;
+    bottom: 0px;
+    top: 70px;
+    margin-left: 25px;
+}

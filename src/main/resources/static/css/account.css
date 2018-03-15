@@ -1,0 +1,63 @@
+.registration{
+	background: rgba(002, 0, 0, 0.5);
+	height: 100%;
+	display: block;
+	margin-top: 30px;
+	padding: 20px 0px;
+}
+
+.registration__field{
+	display: block;
+	width: 80%;
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 10px;
+	margin-top: 20px;
+	z-index: 10;
+	opacity: 1;
+
+}
+
+.registration__obligatery{
+	justify-content: center;
+	text-align: center;
+	display: inline-block;
+
+}
+
+.oblig__star{
+	color: red;
+	margin-left: 10px;
+	font-size: 20px;
+}
+
+.oblig__star__show{
+    color: red;
+    right: 18px;
+    font-size: 20px;
+    position: absolute;
+    margin-top: 26px;
+
+}
+
+.registration__error{
+	display: block;
+	text-align: center;
+	z-index: 100;
+
+}
+
+.registration__field:required{
+	border: 1px solid red;
+}
+
+.registration__button{
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+	width: 50%;
+	margin-top: 20px;
+	padding: 5px;
+}

@@ -1,32 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" ng-app="modal" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,  initial-scale = 1.0"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Title</title>
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/account.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather|PT+Sans+Caption:400,700" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"/>
 </head>
-<body>
-<br/>
+<body >
 
 
-<div id="inputsCustomer">
-    <form id="clear">
-        <input type="text" name="firstName" placeholder="first name" id="first" onkeyup="checkFirst()"/>
-        <p id="first_name"></p>
-        <input type="text" name="lastName" placeholder="last name" id="last" onkeyup="checkLast()"/>
-        <p id="last_name"></p>
-        <input type="text" name="phoneNumber" placeholder="phone number" id="phone" onkeyup="phonecheck()"/>
-        <p id="phone_number"></p>
-        <input type="text" name="address" placeholder="address" id="address"/>
-        <p id="address_"></p>
-        <input type="email" name="email" placeholder="email" id="email" onkeyup="checkEmail()"/>
-        <p id="email_"></p>
+<div th:include="/fragments/cart_frag::#header"></div>
+<!--<div th:include="/fragments/cart::#cart"></div>-->
+<!--<div th:include="/fragments/cart_frag::cart_css"></div>-->
+<!--<div th:include="/fragments/cart_frag::cart_js"></div>-->
 
-        <!--<select id="list"></select>-->
+<div class="cointainer">
+    <div class="row">
+        <div class="col-lg-4 ml-auto mr-auto registration">
+                <span class="registration__obligatery d-flex">Обовязкове для заповнення
+                    <p class="oblig__star">*</p>
+                </span>
+            <p class="oblig__star__show">*</p>
+            <input type="text" placeholder="Ім'я" class="registration__field" id="first" onkeyup="checkFirst()" />
 
-        <button id="saveUser" >Надіслати</button>
-    </form>
+            <span class="registration__error" id="first_name"></span>
+            <p class="oblig__star__show">*</p>
+            <input type="text" placeholder="Прізвище" class="registration__field" id="last" onkeyup="checkLast()"/>
+            <span class="registration__error" id="last_name"></span>
+            <p class="oblig__star__show">*</p>
+            <input type="text" placeholder="Телефон" class="registration__field" id="phone" onkeyup="phonecheck()"/>
+            <span class="registration__error" id="phone_number"></span>
+            <p class="oblig__star__show">*</p>
+            <input type="text" placeholder="Адрес" class="registration__field" id="address"/>
+            <p class="oblig__star__show">*</p>
+            <input type="text" placeholder="email" class="registration__field" id="email" onkeyup="checkEmail()"/>
+            <span class="registration__error" id="email_"></span>
+            <button class="registration__button">Відправити</button>
+        </div>
+    </div>
 </div>
+
+
+<div th:include="/fragments/cart_frag::#footer"></div>
 
 <div class="targetcus"></div>
 
@@ -35,7 +59,11 @@
 <div th:include="/fragments/frag::style"/>
 <div th:include="/fragments/frag::static"/>
 
+
+<script src="/cartmodal.js"></script>
 <script src="/acc.js"></script>
 <script src="/test.js"></script>
+<script src="/cartmodal.js"></script>
+
 </body>
 </html>

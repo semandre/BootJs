@@ -1,12 +1,11 @@
 #modalCartBox {
-
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 100; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-
+    color: black;
     overflow-y: auto; /* Enable scroll if needed */
     overflow-x: hidden;
 
@@ -23,11 +22,8 @@
 }
 
 #modalCartBoxContent {
-
-
     overflow-y: auto ;
     overflow-x: hidden;
-
     background-color: #fefefe;
     margin: auto auto; /* 15% from the top and centered */
     padding: 20px;
